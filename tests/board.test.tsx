@@ -29,6 +29,17 @@ test("renders the complete RP2040 dual-motor controller", async () => {
       (component) => component.manufacturer_part_number === "DRV8833PWPR",
     ),
   ).toBe(true);
+  expect(
+    sourceComponents.some(
+      (component) => component.manufacturer_part_number === "CH224K",
+    ),
+  ).toBe(true);
+  expect(
+    sourceComponents.some(
+      (component) =>
+        component.manufacturer_part_number === "TYPE_C_16PIN_2MD_073_",
+    ),
+  ).toBe(true);
   const unexpectedErrors = circuitJson.filter(
     (element) =>
       element.type.endsWith("_error") &&

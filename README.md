@@ -9,13 +9,15 @@ A tscircuit board combining the reusable `Microcontroller_RP2040` from
   test points from `@tscircuit/common`
 - two brushed-DC motor channels controlled by GPIO0-GPIO3
 - DRV8833 sleep control on GPIO4 and active-low fault feedback on GPIO5
-- separate 2.7 V to 10.8 V motor-power input
+- dedicated USB-C motor-power input with a CH224K PD sink requesting 9 V
 - 1 A current regulation per bridge using 0.2 ohm sense resistors
-- screw terminals for motor power and both motor outputs
+- screw terminals for both motor outputs
 - four 3.2 mm mounting holes
 
-USB powers the RP2040 control circuitry. Motor power must be supplied separately
-through `P_MOTOR_POWER`; the grounds are shared.
+The RP2040 control circuitry and motor driver have separate USB-C ports. The
+motor port negotiates a 9 V USB PD contract when the source supports it; its
+VBUS drives the DRV8833 motor rail. The grounds are shared. The 9 V request was
+selected to stay below the DRV8833's 10.8 V maximum supply rating.
 
 ## Development
 
@@ -30,6 +32,11 @@ bun run snapshot:update
 The DRV8833 support network follows TI's recommendations: 10 uF from VM to
 ground, 10 nF from VCP to VM, and 2.2 uF from VINT to ground. The selected
 DRV8833PWPR is JLCPCB/LCSC part C50506.
+
+The motor-power port uses CH224K JLCPCB/LCSC part C970725 and USB-C receptacle
+C2765186. A 6.8 kohm CFG1 resistor selects the 9 V request. The CH224K VDD and
+VBUS-sense pins use 1 kohm and 10 kohm series resistors respectively, with 1 uF
+local VDD decoupling and 10 uF on the motor VBUS rail.
 
 ## Autorouter note
 
