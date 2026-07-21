@@ -1,9 +1,11 @@
 import { Microcontroller_RP2040 } from "@tscircuit/common";
+import { CH224K } from "./imports/CH224K";
 import { DRV8833PWPR } from "./imports/DRV8833PWPR";
+import { TYPE_C_16PIN_2MD_073_ } from "./imports/TYPE_C_16PIN_2MD_073_";
 import { WJ500V_5_08_2P } from "./imports/WJ500V_5_08_2P";
 
 const logicTrace = { thickness: "0.25mm" } as const;
-const powerTrace = { thickness: "0.8mm" } as const;
+const powerTrace = { thickness: "1mm" } as const;
 const motorTrace = { thickness: "1mm" } as const;
 
 export default function Rp2040MotorController() {
@@ -17,13 +19,23 @@ export default function Rp2040MotorController() {
       <Microcontroller_RP2040 name="MCU" pcbX={-25} schX={-15} />
       <DRV8833PWPR name="DRIVER" pcbX={11} pcbY={0} schX={8} />
 
-      <WJ500V_5_08_2P
-        name="P_MOTOR_POWER"
-        pcbX={34}
-        pcbY={25}
+      <TYPE_C_16PIN_2MD_073_
+        name="J_MOTOR_USB"
+        noConnect={["B8", "A8"]}
+        pcbX={28}
+        pcbY={31}
+        pcbRotation={180}
+        schX={26}
+        schY={15}
+      />
+      <CH224K
+        name="U_PD"
+        noConnect={["CFG2", "CFG3", "PG"]}
+        pcbX={18}
+        pcbY={23}
         pcbRotation={90}
-        schX={21}
-        schY={11}
+        schX={18}
+        schY={15}
       />
       <WJ500V_5_08_2P
         name="P_MOTOR_A"
@@ -40,6 +52,52 @@ export default function Rp2040MotorController() {
         pcbRotation={90}
         schX={21}
         schY={-5}
+      />
+
+      <capacitor
+        name="C_PD_VBUS"
+        capacitance="10uF"
+        footprint="1206"
+        pcbX={20}
+        pcbY={31}
+        schX={23}
+        schY={11}
+      />
+      <capacitor
+        name="C_PD_VDD"
+        capacitance="1uF"
+        footprint="0603"
+        pcbX={11}
+        pcbY={25}
+        schX={13}
+        schY={17}
+      />
+      <resistor
+        name="R_PD_VDD"
+        resistance="1k"
+        footprint="0603"
+        pcbX={15}
+        pcbY={29}
+        schX={14}
+        schY={20}
+      />
+      <resistor
+        name="R_PD_VBUS"
+        resistance="10k"
+        footprint="0603"
+        pcbX={24}
+        pcbY={21}
+        schX={22}
+        schY={20}
+      />
+      <resistor
+        name="R_PD_CFG1"
+        resistance="6.8k"
+        footprint="0603"
+        pcbX={11}
+        pcbY={19}
+        schX={13}
+        schY={12}
       />
 
       <capacitor
@@ -131,7 +189,47 @@ export default function Rp2040MotorController() {
         {...logicTrace}
       />
 
-      <trace from=".DRIVER > .VM" to=".P_MOTOR_POWER > .pin1" {...powerTrace} />
+      <trace
+        from=".J_MOTOR_USB > .A4B9"
+        to=".J_MOTOR_USB > .B4A9"
+        {...powerTrace}
+      />
+      <trace from=".J_MOTOR_USB > .A4B9" to=".DRIVER > .VM" {...powerTrace} />
+      <trace
+        from=".J_MOTOR_USB > .A4B9"
+        to=".C_PD_VBUS > .pin1"
+        {...powerTrace}
+      />
+      <trace
+        from=".J_MOTOR_USB > .A4B9"
+        to=".R_PD_VDD > .pin1"
+        {...logicTrace}
+      />
+      <trace
+        from=".J_MOTOR_USB > .A4B9"
+        to=".R_PD_VBUS > .pin1"
+        {...logicTrace}
+      />
+      <trace from=".R_PD_VDD > .pin2" to=".U_PD > .VDD" {...logicTrace} />
+      <trace from=".R_PD_VBUS > .pin2" to=".U_PD > .VBUS" {...logicTrace} />
+      <trace from=".U_PD > .VDD" to=".C_PD_VDD > .pin1" {...logicTrace} />
+      <trace from=".U_PD > .CFG1" to=".R_PD_CFG1 > .pin1" {...logicTrace} />
+
+      <trace from=".J_MOTOR_USB > .A5" to=".U_PD > .CC1" {...logicTrace} />
+      <trace from=".J_MOTOR_USB > .B5" to=".U_PD > .CC2" {...logicTrace} />
+      <trace from=".J_MOTOR_USB > .A6" to=".U_PD > .DP" {...logicTrace} />
+      <trace
+        from=".J_MOTOR_USB > .B6"
+        to=".J_MOTOR_USB > .A6"
+        {...logicTrace}
+      />
+      <trace from=".J_MOTOR_USB > .A7" to=".U_PD > .DM" {...logicTrace} />
+      <trace
+        from=".J_MOTOR_USB > .B7"
+        to=".J_MOTOR_USB > .A7"
+        {...logicTrace}
+      />
+
       <trace from=".DRIVER > .VM" to=".C_VM_BULK > .pin1" {...powerTrace} />
       <trace from=".DRIVER > .VM" to=".C_VM_HF > .pin1" {...powerTrace} />
       <trace from=".DRIVER > .VM" to=".C_VCP > .pin2" {...logicTrace} />
@@ -139,10 +237,39 @@ export default function Rp2040MotorController() {
       <trace from=".DRIVER > .GND2" to=".MCU > .U1 > .GND" {...powerTrace} />
       <trace from=".DRIVER > .GND1" to=".DRIVER > .GND2" {...powerTrace} />
       <trace
-        from=".P_MOTOR_POWER > .pin2"
+        from=".J_MOTOR_USB > .A1B12"
         to=".DRIVER > .GND2"
         {...powerTrace}
       />
+      <trace
+        from=".J_MOTOR_USB > .B1A12"
+        to=".J_MOTOR_USB > .A1B12"
+        {...powerTrace}
+      />
+      <trace
+        from=".J_MOTOR_USB > .EH1"
+        to=".J_MOTOR_USB > .A1B12"
+        {...powerTrace}
+      />
+      <trace
+        from=".J_MOTOR_USB > .EH2"
+        to=".J_MOTOR_USB > .A1B12"
+        {...powerTrace}
+      />
+      <trace
+        from=".J_MOTOR_USB > .EH3"
+        to=".J_MOTOR_USB > .A1B12"
+        {...powerTrace}
+      />
+      <trace
+        from=".J_MOTOR_USB > .EH4"
+        to=".J_MOTOR_USB > .A1B12"
+        {...powerTrace}
+      />
+      <trace from=".U_PD > .GND" to=".DRIVER > .GND2" {...powerTrace} />
+      <trace from=".C_PD_VBUS > .pin2" to=".DRIVER > .GND2" {...powerTrace} />
+      <trace from=".C_PD_VDD > .pin2" to=".DRIVER > .GND2" {...logicTrace} />
+      <trace from=".R_PD_CFG1 > .pin2" to=".DRIVER > .GND2" {...logicTrace} />
       <trace from=".R_ISEN_A > .pin2" to=".DRIVER > .GND2" {...powerTrace} />
       <trace from=".R_ISEN_B > .pin2" to=".DRIVER > .GND2" {...powerTrace} />
       <trace from=".C_VINT > .pin2" to=".DRIVER > .GND2" {...logicTrace} />
@@ -183,10 +310,16 @@ export default function Rp2040MotorController() {
       <silkscreentext
         text="RP2040 DUAL MOTOR"
         fontSize="1.2mm"
-        pcbX={20}
-        pcbY={32}
+        pcbX={-2}
+        pcbY={34}
       />
-      <silkscreentext text="VM 2.7-10.8V" fontSize="1mm" pcbX={32} pcbY={18} />
+      <silkscreentext
+        text="USB-C PD MOTOR"
+        fontSize="1mm"
+        pcbX={34}
+        pcbY={22}
+      />
+      <silkscreentext text="REQUESTS 9V" fontSize="0.9mm" pcbX={34} pcbY={19} />
       <silkscreentext text="MOTOR A" fontSize="1mm" pcbX={32} pcbY={-2} />
       <silkscreentext text="MOTOR B" fontSize="1mm" pcbX={32} pcbY={-22} />
     </board>
