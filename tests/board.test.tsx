@@ -3,9 +3,9 @@ import { Circuit } from "tscircuit";
 import Rp2040MotorController from "../index.circuit";
 
 const knownMergedGroundViaErrors = new Set([
-  "same_net_vias_close_pcb_via_10_pcb_via_29",
-  "same_net_vias_close_pcb_via_19_pcb_via_29",
-  "same_net_vias_close_pcb_via_24_pcb_via_29",
+  "same_net_vias_close_pcb_via_106_pcb_via_87",
+  "same_net_vias_close_pcb_via_106_pcb_via_96",
+  "same_net_vias_close_pcb_via_101_pcb_via_106",
 ]);
 
 test("renders the complete RP2040 dual-motor controller", async () => {
