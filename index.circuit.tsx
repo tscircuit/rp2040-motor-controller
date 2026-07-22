@@ -3,7 +3,7 @@ import { CH224K } from "./imports/CH224K";
 import { DRV8833PWPR } from "./imports/DRV8833PWPR";
 import { TYPE_C_16PIN_2MD_073_ } from "./imports/TYPE_C_16PIN_2MD_073_";
 import { WJ500V_5_08_2P } from "./imports/WJ500V_5_08_2P";
-import { createPhasedTraceWidthFixerAlgorithm } from "./lib/trace-width-fixer";
+import { createPhasedPowerTraceExpanderAlgorithm } from "./lib/createPhasedPowerTraceExpanderAlgorithm";
 
 const logicTrace = { thickness: "0.25mm" } as const;
 const powerTrace = { thickness: "1mm" } as const;
@@ -11,7 +11,7 @@ const motorTrace = { thickness: "1mm" } as const;
 
 export default function Rp2040MotorController() {
   const { initialAlgorithmFn, rerouteAlgorithmFn } =
-    createPhasedTraceWidthFixerAlgorithm();
+    createPhasedPowerTraceExpanderAlgorithm();
 
   return (
     <board

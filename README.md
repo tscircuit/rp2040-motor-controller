@@ -27,13 +27,11 @@ bun run typecheck
 bun test
 bun run build
 bun run snapshot:update
-bun run solver:debug
 ```
 
-`solver:debug` opens the generic solver debugger on a compact trace-width
-fixture. Each trace scan, segment expansion decision, grid candidate, and
-obstacle-aware search step can be advanced individually. Use
-`bun run solver:debug:build` to verify the debugger's static build.
+The reusable solver and its generic step debugger live in
+[`@tscircuit/power-trace-expander`](https://github.com/tscircuit/power-trace-expander).
+[Open the deployed step-through debugger](https://power-trace-expander.vercel.app).
 
 The DRV8833 support network follows TI's recommendations: 10 uF from VM to
 ground, 10 nF from VCP to VM, and 2.2 uF from VINT to ground. The selected
@@ -47,18 +45,27 @@ local VDD decoupling and 10 uF on the motor VBUS rail.
 ## Trace-width reroute phase
 
 After the normal multigraph route, a whole-board `<autoroutingphase reroute />`
-runs the local trace-width fixer. Conforming traces are retained unchanged.
+runs `@tscircuit/power-trace-expander`. Conforming traces are retained unchanged.
 Under-width wire intervals are split into nominal-width-sized pieces and widened
 in place when the Flatbush obstacle index proves the required clearance. A
-blocked interval tries exponentially farther reconnect points, up to 10 mm,
-using obstacle-aware high-density grid searches. Grid widths are tried from
-largest to smallest, with aligned and half-cell offset variants, so the widest
-successful replacement is selected first.
+blocked interval tries exponentially farther reconnect points, up to 10 mm of
+the original route. The solver can retreat to an earlier safe anchor before
+running obstacle-aware high-density grid searches. Candidate widths are tried
+from largest to smallest across multiple geometric resolutions, with aligned
+and half-cell offset variants, so the widest successful replacement is selected
+first.
+
+When the nominal power corridor is blocked only by one or two lower-width
+traces, a bounded local inflation pass reroutes those traces between fixed
+anchors before retrying the expansion. Pads and vias remain fixed, and the
+displaced interval is capped at 10 mm.
 
 Diagonal traces and rotated obstacles are indexed as short conservative AABBs;
 the exact segment/AABB test runs only for candidates returned by Flatbush. The
 solver follows `@tscircuit/solver-utils` conventions and exposes its active grid
-search as `activeSubSolver` for debugger breadcrumbs.
+search as `activeSubSolver` for debugger breadcrumbs. The actively-mutating
+trace is omitted from the immutable Flatbush cache so route splitting cannot
+create stale self-collision indices.
 
 ## Autorouter note
 

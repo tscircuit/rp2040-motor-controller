@@ -14,8 +14,6 @@
     "build": "tsci build",
     "snapshot": "tsci snapshot",
     "snapshot:update": "tsci snapshot --update",
-    "solver:debug": "cosmos",
-    "solver:debug:build": "cosmos-export",
     "start": "tsci dev",
     "test": "bun test",
     "typecheck": "tsc --noEmit"
@@ -23,19 +21,12 @@
   "devDependencies": {
     "@types/bun": "^1.3.14",
     "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "react-cosmos": "^7.3.0",
-    "react-cosmos-plugin-vite": "^7.3.0",
-    "react-dom": "^19.2.8",
     "tscircuit": "^0.0.2116",
-    "typescript": "^5.0.0",
-    "vite": "^8.1.5"
+    "typescript": "^5.0.0"
   },
   "dependencies": {
     "@tscircuit/common": "^0.0.43",
     "@tscircuit/footprinter": "^0.0.380",
-    "@tscircuit/solver-utils": "^0.0.19",
-    "flatbush": "^4.6.2",
-    "graphics-debug": "^0.0.96"
+    "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#3fc81b9dfef26edef5ba6f93cc68f9759e7ed4d4"
   }
 }
