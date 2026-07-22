@@ -28,6 +28,6 @@
   "dependencies": {
     "@tscircuit/common": "^0.0.43",
     "@tscircuit/footprinter": "^0.0.380",
-    "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#fb72a1dc9e0f742808f412c6c0ab119b3264ac71"
+    "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#26867a1"
   }
 }

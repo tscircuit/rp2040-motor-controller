@@ -110,6 +110,20 @@ test("renders the complete RP2040 dual-motor controller", async () => {
       element.type === "pcb_trace" &&
       element.source_trace_id === upperMotorASourceTraceId,
   );
+  const rIsenBSourceTrace = circuitJson.find(
+    (element) =>
+      element.type === "source_trace" &&
+      element.display_name === ".DRIVER > .BISEN to .R_ISEN_B > .pin1",
+  );
+  const rIsenBSourceTraceId =
+    rIsenBSourceTrace?.type === "source_trace"
+      ? rIsenBSourceTrace.source_trace_id
+      : undefined;
+  const rIsenBPcbTrace = circuitJson.find(
+    (element) =>
+      element.type === "pcb_trace" &&
+      element.source_trace_id === rIsenBSourceTraceId,
+  );
   let upperMotorALength = 0;
   let upperMotorANominalLength = 0;
   let upperMotorAWidthArea = 0;
@@ -173,6 +187,13 @@ test("renders the complete RP2040 dual-motor controller", async () => {
   expect(upperMotorABottomLength).toBeGreaterThan(10);
   expect(upperMotorANominalLength / upperMotorALength).toBeGreaterThan(0.97);
   expect(upperMotorAWidthArea / upperMotorALength).toBeGreaterThan(0.99);
+  expect(rIsenBSourceTrace?.type).toBe("source_trace");
+  expect(rIsenBPcbTrace?.type).toBe("pcb_trace");
+  expect(
+    rIsenBPcbTrace?.type === "pcb_trace"
+      ? rIsenBPcbTrace.route.filter((point) => point.route_type === "via")
+      : [],
+  ).toEqual([]);
   // This check reports the minimum route-point width for an entire connected
   // net, so it is a board-integration regression budget rather than a
   // length-weighted quality metric. The captured solver fixture locks the
