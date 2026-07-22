@@ -61,6 +61,14 @@ push those traces by the minimum useful amount. It falls back to a grid reroute
 between fixed anchors when necessary. Pads and vias remain fixed, and the
 displaced interval is capped at 10 mm.
 
+Segments that remain below half nominal width receive a bounded multilayer A*
+attempt. The solver tries two grid offsets, moves the route through one or two
+vias, and independently probes each terminal neck in 0.025 mm increments. This
+keeps unavoidable necking local to a pad escape while carrying nominal-width
+copper across the alternate layer. The candidate is accepted only when it
+reduces conservative copper deficit and passes the full obstacle and via-drill
+checks.
+
 Connection aliases are resolved across source traces, merged names, and PCB
 ports, so pads, vias, and traces on the same net are treated as connected copper
 rather than clearance obstacles. Diagonal traces and rotated obstacles are
@@ -71,11 +79,16 @@ grid searches as granular debugger steps.
 
 Productive whole-board passes repeat until added copper falls below 0.1% of the
 nominal area. On the captured board problem, the 1 mm routes improve from 1.27%
-to 80.02% full-width coverage, their length-weighted average rises from 0.232 mm
-to 0.906 mm, and 92.07% of their length reaches at least 0.5 mm. The 0.25 mm
-routes reach 99.47% full-width coverage. The solver fixture completes in roughly
-10 seconds and has explicit wall-time, iteration, and grid-attempt regression
-budgets.
+to 86.58% full-width coverage, their length-weighted average rises from 0.232 mm
+to 0.939 mm, and 93.40% of their length reaches at least 0.5 mm. The 0.25 mm
+routes reach 99.38% full-width coverage. A representative solver run completes
+in roughly 7.3 seconds and has explicit wall-time, iteration, and grid-attempt
+regression budgets.
+
+The upper `P_MOTOR_A` path is also locked as an isolated full-board-context
+regression. It now uses exactly two vias and 10.129 mm of bottom-layer copper,
+reaching 99.52% conservative full-width coverage and a 0.998 mm average while
+keeping its unavoidable terminal neck at 0.600 mm.
 
 The board test independently reruns `@tscircuit/checks` routing validation on
 the completed Circuit JSON. It rejects every new issue and allowlists only the
