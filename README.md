@@ -57,11 +57,14 @@ and half-cell offset variants. Successful paths and in-place segments are then
 probed to the widest safe quantized intermediate width.
 
 After width expansion plateaus, a cleanup pass removes redundant same-layer via
-pairs with compact 0/45/90-degree shortcuts or a bounded obstacle-aware grid
-detour. It then normalizes power paths to 0/45/90-degree geometry. The cleanup
-first probes 0.10 mm and 0.05 mm of extra clearance and may transactionally
-shove a lower-width neighboring trace; every displacement is rolled back unless
-the final shortcut passes direction-independent boundary-width validation.
+pairs with compact shortcuts or a bounded obstacle-aware grid detour. A
+dedicated pad-clearance stage then moves power copper away from unrelated pads
+toward half of each trace's nominal width. It tries descending intermediate
+tiers when the full target cannot fit. A final stage normalizes the
+clearance-improved paths to 0/45/90-degree geometry while preserving the local
+clearance already gained. It may transactionally shove a lower-width neighbor;
+every displacement is rolled back unless the final path passes
+direction-independent boundary-width validation.
 
 When the nominal power corridor is blocked only by one or two lower-width
 traces, a bounded local inflation pass first applies a smooth elastic force to
@@ -87,12 +90,14 @@ grid searches as granular debugger steps.
 
 Productive whole-board passes repeat until added copper falls below 0.1% of the
 nominal area. On the captured board problem, the 1 mm routes improve from 1.27%
-to 86.92% full-width coverage, their length-weighted average rises from 0.232 mm
-to 0.940 mm, and 93.36% of their length reaches at least 0.5 mm. The cleanup
-removes six redundant via pairs and normalizes 80 arbitrary-angle segments. The
-0.25 mm routes reach 99.38% full-width coverage. A representative solver run
-completes in roughly 9.8 seconds and has explicit wall-time, iteration, and
-grid-attempt regression budgets.
+to 87.36% full-width coverage, their length-weighted average rises from 0.232 mm
+to 0.939 mm, and 93.55% of their length reaches at least 0.5 mm. The cleanup
+removes four redundant via pairs, normalizes 67 arbitrary-angle segments, and
+reduces power-to-pad clearance misses from 122 to 96 at the desired 0.50 mm
+target (and from 25 to 19 at 0.15 mm). The 0.25 mm routes reach 99.48%
+full-width coverage. A representative solver run completes in roughly 14
+seconds and has explicit wall-time, iteration, and grid-attempt regression
+budgets.
 
 The upper `P_MOTOR_A` path is also locked as an isolated full-board-context
 regression. It now uses exactly two vias and 10.129 mm of bottom-layer copper,
@@ -105,15 +110,10 @@ explicit board-level `GND` net. Both use 0.2 mm pad/trace clearance and remain
 on both layers to share the same ground net and remain covered by solder mask.
 
 The board test independently reruns `@tscircuit/checks` routing validation on
-the completed Circuit JSON. It rejects every new issue and allowlists only the
-three existing same-net ground-via spacing reports described below.
+the completed Circuit JSON and requires zero routing or circuit errors. It also
+uses shape-aware pad geometry to reject any routed via inside an SMT pad.
 
-## Autorouter note
-
-Connecting the board ground to the imported RP2040 subcircuit currently causes
-three coincident same-net ground vias at the subcircuit boundary to be reported
-by tscircuit's DRC. Whole-board trace replacement changes their generated via
-IDs, but their coordinates and clearances are identical to the pre-reroute
-baseline. The regression test allowlists only those three stable
-`same_net_vias_close` reports and continues to reject every other circuit or PCB
-error.
+The pad-clearance target is intentionally best-effort: dense package escapes
+may keep the board's legal 0.1 mm minimum when half-width spacing cannot fit.
+The regression separately budgets the remaining 0.15 mm preferred-clearance
+misses while still requiring the hard DRC suite to be completely clean.

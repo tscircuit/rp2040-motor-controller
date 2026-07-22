@@ -139,8 +139,9 @@ test("renders the complete RP2040 dual-motor controller", async () => {
   expect(unexpectedErrors).toEqual([]);
   expect(routingIssues).toEqual([]);
   expect(routedViaPadOverlaps).toEqual([]);
-  // The board's hard rule is 0.1 mm. The expander targets 0.15 mm for power
-  // copper and leaves this small budget only for unavoidable package escapes.
+  // The board's hard rule is 0.1 mm. The expander now targets half of each
+  // power trace's nominal width and leaves this 0.15 mm budget only for
+  // unavoidable package escapes.
   expect(preferredPowerPadClearanceIssues.length).toBeLessThanOrEqual(11);
   expect(copperPours.length).toBeGreaterThanOrEqual(2);
   expect(new Set(copperPours.map((pour) => pour.layer))).toEqual(
