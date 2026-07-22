@@ -66,6 +66,17 @@ test("renders the complete RP2040 dual-motor controller", async () => {
   const uniqueUnderWidthTraceIds = new Set(
     widthWarnings.map((warning) => warning.pcb_trace_id),
   );
+  const copperPours = circuitJson.filter(
+    (element) => element.type === "pcb_copper_pour",
+  );
+  const copperPourNetIds = new Set(
+    copperPours.map((pour) => pour.source_net_id),
+  );
+  const copperPourNet = circuitJson.find(
+    (element) =>
+      element.type === "source_net" &&
+      copperPourNetIds.has(element.source_net_id),
+  );
   const upperMotorASourceTrace = circuitJson.find(
     (element) =>
       element.type === "source_trace" &&
@@ -108,6 +119,24 @@ test("renders the complete RP2040 dual-motor controller", async () => {
 
   expect(unexpectedErrors).toEqual([]);
   expect(unexpectedRoutingIssues).toEqual([]);
+  expect(copperPours.length).toBeGreaterThanOrEqual(2);
+  expect(new Set(copperPours.map((pour) => pour.layer))).toEqual(
+    new Set(["top", "bottom"]),
+  );
+  expect(copperPours.some((pour) => pour.layer === "top")).toBe(true);
+  expect(copperPours.some((pour) => pour.layer === "bottom")).toBe(true);
+  expect(copperPourNetIds.size).toBe(1);
+  expect(copperPourNet?.type === "source_net" && copperPourNet.name).toBe(
+    "GND",
+  );
+  expect(
+    copperPours.every(
+      (pour) =>
+        pour.shape === "brep" &&
+        pour.brep_shape.outer_ring.vertices.length >= 3 &&
+        pour.covered_with_solder_mask,
+    ),
+  ).toBe(true);
   expect(upperMotorASourceTrace?.type).toBe("source_trace");
   expect(upperMotorAPcbTrace?.type).toBe("pcb_trace");
   expect(

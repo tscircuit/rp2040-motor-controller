@@ -24,6 +24,8 @@ export default function Rp2040MotorController() {
       }}
       autorouterEffortLevel="10x"
     >
+      <net name="GND" />
+
       <autoroutingphase
         reroute
         region={{ minX: -45, maxX: 45, minY: -37.5, maxY: 37.5 }}
@@ -39,7 +41,13 @@ export default function Rp2040MotorController() {
         pcbX={-25}
         schX={-15}
       />
-      <DRV8833PWPR name="DRIVER" pcbX={11} pcbY={0} schX={8} />
+      <DRV8833PWPR
+        name="DRIVER"
+        pcbX={11}
+        pcbY={0}
+        schX={8}
+        connections={{ GND2: "net.GND" }}
+      />
 
       <TYPE_C_16PIN_2MD_073_
         name="J_MOTOR_USB"
@@ -322,6 +330,27 @@ export default function Rp2040MotorController() {
         from=".R_FAULT_PU > .pin2"
         to=".MCU > .U1 > .IOVDD1"
         {...logicTrace}
+      />
+
+      <copperpour
+        name="GND_TOP"
+        layer="top"
+        connectsTo="net.GND"
+        clearance="0.2mm"
+        padMargin="0.2mm"
+        traceMargin="0.2mm"
+        boardEdgeMargin="0.3mm"
+        coveredWithSolderMask
+      />
+      <copperpour
+        name="GND_BOTTOM"
+        layer="bottom"
+        connectsTo="net.GND"
+        clearance="0.2mm"
+        padMargin="0.2mm"
+        traceMargin="0.2mm"
+        boardEdgeMargin="0.3mm"
+        coveredWithSolderMask
       />
 
       <hole diameter="3.2mm" pcbX={-41} pcbY={33} />

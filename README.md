@@ -11,6 +11,7 @@ A tscircuit board combining the reusable `Microcontroller_RP2040` from
 - DRV8833 sleep control on GPIO4 and active-low fault feedback on GPIO5
 - dedicated USB-C motor-power input with a CH224K PD sink requesting 9 V
 - 1 A current regulation per bridge using 0.2 ohm sense resistors
+- solder-mask-covered GND copper pours on the top and bottom layers
 - screw terminals for both motor outputs
 - four 3.2 mm mounting holes
 
@@ -89,6 +90,11 @@ The upper `P_MOTOR_A` path is also locked as an isolated full-board-context
 regression. It now uses exactly two vias and 10.129 mm of bottom-layer copper,
 reaching 99.52% conservative full-width coverage and a 0.998 mm average while
 keeping its unavoidable terminal neck at 0.600 mm.
+
+After routing, the board generates top- and bottom-layer pours tied to one
+explicit board-level `GND` net. Both use 0.2 mm pad/trace clearance and remain
+0.3 mm inside the board edge. The board regression requires B-Rep pour islands
+on both layers to share the same ground net and remain covered by solder mask.
 
 The board test independently reruns `@tscircuit/checks` routing validation on
 the completed Circuit JSON. It rejects every new issue and allowlists only the
