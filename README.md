@@ -56,6 +56,13 @@ from largest to smallest across multiple geometric resolutions, with aligned
 and half-cell offset variants. Successful paths and in-place segments are then
 probed to the widest safe quantized intermediate width.
 
+After width expansion plateaus, a cleanup pass removes redundant same-layer via
+pairs with compact 0/45/90-degree shortcuts or a bounded obstacle-aware grid
+detour. It then normalizes power paths to 0/45/90-degree geometry. The cleanup
+first probes 0.10 mm and 0.05 mm of extra clearance and may transactionally
+shove a lower-width neighboring trace; every displacement is rolled back unless
+the final shortcut passes direction-independent boundary-width validation.
+
 When the nominal power corridor is blocked only by one or two lower-width
 traces, a bounded local inflation pass first applies a smooth elastic force to
 push those traces by the minimum useful amount. It falls back to a grid reroute
@@ -80,11 +87,12 @@ grid searches as granular debugger steps.
 
 Productive whole-board passes repeat until added copper falls below 0.1% of the
 nominal area. On the captured board problem, the 1 mm routes improve from 1.27%
-to 86.58% full-width coverage, their length-weighted average rises from 0.232 mm
-to 0.939 mm, and 93.40% of their length reaches at least 0.5 mm. The 0.25 mm
-routes reach 99.38% full-width coverage. A representative solver run completes
-in roughly 7.3 seconds and has explicit wall-time, iteration, and grid-attempt
-regression budgets.
+to 86.92% full-width coverage, their length-weighted average rises from 0.232 mm
+to 0.940 mm, and 93.36% of their length reaches at least 0.5 mm. The cleanup
+removes six redundant via pairs and normalizes 80 arbitrary-angle segments. The
+0.25 mm routes reach 99.38% full-width coverage. A representative solver run
+completes in roughly 9.8 seconds and has explicit wall-time, iteration, and
+grid-attempt regression budgets.
 
 The upper `P_MOTOR_A` path is also locked as an isolated full-board-context
 regression. It now uses exactly two vias and 10.129 mm of bottom-layer copper,
