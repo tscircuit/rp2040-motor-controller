@@ -7,9 +7,10 @@
       "dependencies": {
         "@tscircuit/common": "^0.0.43",
         "@tscircuit/footprinter": "^0.0.380",
-        "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#3fc81b9dfef26edef5ba6f93cc68f9759e7ed4d4",
+        "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#3579400520b41f7080a570688849fa01e10858c6",
       },
       "devDependencies": {
+        "@tscircuit/checks": "0.0.145",
         "@types/bun": "^1.3.14",
         "@types/react": "^19.2.17",
         "tscircuit": "^0.0.2116",
@@ -200,7 +201,7 @@
 
     "@tscircuit/ngspice-spice-engine": ["@tscircuit/ngspice-spice-engine@0.0.19", "", { "peerDependencies": { "@tscircuit/props": "*", "circuit-json": "*", "typescript": "^5" } }, "sha512-HV/HrShlvQWSNJtjBJqBmFIvRUHOZYoIGjNdNaNhN7EvHpJ2MdVmqU/c4D+DzOVU/J7vg8R6yLvUHixXvH5LFg=="],
 
-    "@tscircuit/power-trace-expander": ["@tscircuit/power-trace-expander@github:tscircuit/power-trace-expander#3fc81b9", { "dependencies": { "@tscircuit/solver-utils": "^0.0.19", "flatbush": "^4.6.2", "graphics-debug": "^0.0.96" }, "peerDependencies": { "@tscircuit/core": "^0.0.1470", "typescript": "^5" } }, "tscircuit-power-trace-expander-3fc81b9"],
+    "@tscircuit/power-trace-expander": ["@tscircuit/power-trace-expander@github:tscircuit/power-trace-expander#3579400", { "dependencies": { "@tscircuit/solver-utils": "^0.0.19", "flatbush": "^4.6.2", "graphics-debug": "^0.0.96" }, "peerDependencies": { "@tscircuit/core": "^0.0.1470", "typescript": "^5" } }, "tscircuit-power-trace-expander-3579400"],
 
     "@tscircuit/props": ["@tscircuit/props@0.0.586", "", { "peerDependencies": { "circuit-json": "*", "react": "*", "zod": "*" } }, "sha512-tYG+4RUnu8+K2qzgDk+p0608Zq+ppXEibCUc/8FfIKEwBM/9QyPv+h/9v/DG5MAN7UmoBC2kEucjffmyFicUZQ=="],
 

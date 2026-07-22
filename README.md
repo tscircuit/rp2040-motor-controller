@@ -52,20 +52,34 @@ blocked interval tries exponentially farther reconnect points, up to 10 mm of
 the original route. The solver can retreat to an earlier safe anchor before
 running obstacle-aware high-density grid searches. Candidate widths are tried
 from largest to smallest across multiple geometric resolutions, with aligned
-and half-cell offset variants, so the widest successful replacement is selected
-first.
+and half-cell offset variants. Successful paths and in-place segments are then
+probed to the widest safe quantized intermediate width.
 
 When the nominal power corridor is blocked only by one or two lower-width
-traces, a bounded local inflation pass reroutes those traces between fixed
-anchors before retrying the expansion. Pads and vias remain fixed, and the
+traces, a bounded local inflation pass first applies a smooth elastic force to
+push those traces by the minimum useful amount. It falls back to a grid reroute
+between fixed anchors when necessary. Pads and vias remain fixed, and the
 displaced interval is capped at 10 mm.
 
-Diagonal traces and rotated obstacles are indexed as short conservative AABBs;
-the exact segment/AABB test runs only for candidates returned by Flatbush. The
-solver follows `@tscircuit/solver-utils` conventions and exposes its active grid
-search as `activeSubSolver` for debugger breadcrumbs. The actively-mutating
-trace is omitted from the immutable Flatbush cache so route splitting cannot
-create stale self-collision indices.
+Connection aliases are resolved across source traces, merged names, and PCB
+ports, so pads, vias, and traces on the same net are treated as connected copper
+rather than clearance obstacles. Diagonal traces and rotated obstacles are
+indexed as short AABBs; exact capsule, polygon, and circle checks run only for
+the candidates returned by Flatbush. The solver follows
+`@tscircuit/solver-utils` conventions and exposes elastic relaxation and active
+grid searches as granular debugger steps.
+
+Productive whole-board passes repeat until added copper falls below 0.1% of the
+nominal area. On the captured board problem, the 1 mm routes improve from 1.27%
+to 80.02% full-width coverage, their length-weighted average rises from 0.232 mm
+to 0.906 mm, and 92.07% of their length reaches at least 0.5 mm. The 0.25 mm
+routes reach 99.47% full-width coverage. The solver fixture completes in roughly
+10 seconds and has explicit wall-time, iteration, and grid-attempt regression
+budgets.
+
+The board test independently reruns `@tscircuit/checks` routing validation on
+the completed Circuit JSON. It rejects every new issue and allowlists only the
+three existing same-net ground-via spacing reports described below.
 
 ## Autorouter note
 

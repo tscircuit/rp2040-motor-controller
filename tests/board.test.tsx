@@ -1,4 +1,8 @@
 import { expect, test } from "bun:test";
+import {
+  checkSourceTracesMatchPcbTraceThickness,
+  runAllRoutingChecks,
+} from "@tscircuit/checks";
 import { Circuit } from "tscircuit";
 import Rp2040MotorController from "../index.circuit";
 
@@ -48,6 +52,27 @@ test("renders the complete RP2040 dual-motor controller", async () => {
         knownMergedGroundViaErrors.has(element.pcb_error_id)
       ),
   );
+  const routingIssues = await runAllRoutingChecks(
+    structuredClone(circuitJson),
+  );
+  const unexpectedRoutingIssues = routingIssues.filter(
+    (issue) =>
+      !(
+        issue.type === "pcb_via_clearance_error" &&
+        knownMergedGroundViaErrors.has(issue.pcb_error_id)
+      ),
+  );
+  const widthWarnings = checkSourceTracesMatchPcbTraceThickness(circuitJson);
+  const uniqueUnderWidthTraceIds = new Set(
+    widthWarnings.map((warning) => warning.pcb_trace_id),
+  );
 
   expect(unexpectedErrors).toEqual([]);
+  expect(unexpectedRoutingIssues).toEqual([]);
+  // This check reports the minimum route-point width for an entire connected
+  // net, so it is a board-integration regression budget rather than a
+  // length-weighted quality metric. The captured solver fixture locks the
+  // measured coverage, percentiles, deficit, and runtime improvements.
+  expect(widthWarnings.length).toBeLessThanOrEqual(46);
+  expect(uniqueUnderWidthTraceIds.size).toBeLessThanOrEqual(18);
 }, 120_000);
