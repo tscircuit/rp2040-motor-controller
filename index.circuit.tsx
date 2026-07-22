@@ -38,6 +38,7 @@ export default function Rp2040MotorController() {
       <Microcontroller_RP2040
         name="MCU"
         autorouter="auto_local"
+        schAutoLayoutEnabled
         pcbX={-25}
         schX={-15}
       />
@@ -46,6 +47,7 @@ export default function Rp2040MotorController() {
         pcbX={11}
         pcbY={0}
         schX={8}
+        schHeight={1.8}
         connections={{ GND2: "net.GND" }}
       />
 
@@ -66,6 +68,7 @@ export default function Rp2040MotorController() {
         pcbRotation={90}
         schX={18}
         schY={15}
+        schHeight={1.2}
       />
       <WJ500V_5_08_2P
         name="P_MOTOR_A"
@@ -92,6 +95,7 @@ export default function Rp2040MotorController() {
         pcbY={31}
         schX={23}
         schY={11}
+        schOrientation="vertical"
       />
       <capacitor
         name="C_PD_VDD"
@@ -101,6 +105,7 @@ export default function Rp2040MotorController() {
         pcbY={25}
         schX={13}
         schY={17}
+        schOrientation="vertical"
       />
       <resistor
         name="R_PD_VDD"
@@ -136,8 +141,9 @@ export default function Rp2040MotorController() {
         footprint="1206"
         pcbX={16}
         pcbY={8}
-        schX={12}
+        schX={5.48}
         schY={10}
+        schOrientation="vertical"
       />
       <capacitor
         name="C_VM_HF"
@@ -145,8 +151,9 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={12}
         pcbY={8}
-        schX={15}
+        schX={21.52}
         schY={10}
+        schOrientation="vertical"
       />
       <capacitor
         name="C_VCP"
@@ -156,6 +163,7 @@ export default function Rp2040MotorController() {
         pcbY={6}
         schX={11}
         schY={6}
+        schOrientation="vertical"
       />
       <capacitor
         name="C_VINT"
@@ -165,6 +173,7 @@ export default function Rp2040MotorController() {
         pcbY={2}
         schX={11}
         schY={2}
+        schOrientation="vertical"
       />
 
       <resistor
@@ -224,7 +233,12 @@ export default function Rp2040MotorController() {
         to=".J_MOTOR_USB > .B4A9"
         {...powerTrace}
       />
-      <trace from=".J_MOTOR_USB > .A4B9" to=".DRIVER > .VM" {...powerTrace} />
+      <trace
+        from=".J_MOTOR_USB > .A4B9"
+        to=".DRIVER > .VM"
+        schDisplayLabel="VMOTOR"
+        {...powerTrace}
+      />
       <trace
         from=".J_MOTOR_USB > .A4B9"
         to=".C_PD_VBUS > .pin1"
@@ -240,27 +254,62 @@ export default function Rp2040MotorController() {
         to=".R_PD_VBUS > .pin1"
         {...logicTrace}
       />
-      <trace from=".R_PD_VDD > .pin2" to=".U_PD > .VDD" {...logicTrace} />
-      <trace from=".R_PD_VBUS > .pin2" to=".U_PD > .VBUS" {...logicTrace} />
+      <trace
+        from=".R_PD_VDD > .pin2"
+        to=".U_PD > .VDD"
+        schDisplayLabel="PD_VDD"
+        {...logicTrace}
+      />
+      <trace
+        from=".R_PD_VBUS > .pin2"
+        to=".U_PD > .VBUS"
+        schDisplayLabel="PD_VBUS"
+        {...logicTrace}
+      />
       <trace from=".U_PD > .VDD" to=".C_PD_VDD > .pin1" {...logicTrace} />
       <trace from=".U_PD > .CFG1" to=".R_PD_CFG1 > .pin1" {...logicTrace} />
 
-      <trace from=".J_MOTOR_USB > .A5" to=".U_PD > .CC1" {...logicTrace} />
-      <trace from=".J_MOTOR_USB > .B5" to=".U_PD > .CC2" {...logicTrace} />
-      <trace from=".J_MOTOR_USB > .A6" to=".U_PD > .DP" {...logicTrace} />
+      <trace
+        from=".J_MOTOR_USB > .A5"
+        to=".U_PD > .CC1"
+        schDisplayLabel="CC1"
+        {...logicTrace}
+      />
+      <trace
+        from=".J_MOTOR_USB > .B5"
+        to=".U_PD > .CC2"
+        schDisplayLabel="CC2"
+        {...logicTrace}
+      />
+      <trace
+        from=".J_MOTOR_USB > .A6"
+        to=".U_PD > .DP"
+        schDisplayLabel="USB_D+"
+        {...logicTrace}
+      />
       <trace
         from=".J_MOTOR_USB > .B6"
         to=".J_MOTOR_USB > .A6"
         {...logicTrace}
       />
-      <trace from=".J_MOTOR_USB > .A7" to=".U_PD > .DM" {...logicTrace} />
+      <trace
+        from=".J_MOTOR_USB > .A7"
+        to=".U_PD > .DM"
+        schDisplayLabel="USB_D-"
+        {...logicTrace}
+      />
       <trace
         from=".J_MOTOR_USB > .B7"
         to=".J_MOTOR_USB > .A7"
         {...logicTrace}
       />
 
-      <trace from=".DRIVER > .VM" to=".C_VM_BULK > .pin1" {...powerTrace} />
+      <trace
+        from=".DRIVER > .VM"
+        to=".C_VM_BULK > .pin1"
+        schDisplayLabel="VMOTOR"
+        {...powerTrace}
+      />
       <trace from=".DRIVER > .VM" to=".C_VM_HF > .pin1" {...powerTrace} />
       <trace from=".DRIVER > .VM" to=".C_VCP > .pin2" {...logicTrace} />
 
@@ -307,15 +356,50 @@ export default function Rp2040MotorController() {
       <trace from=".C_VM_HF > .pin2" to=".DRIVER > .GND2" {...powerTrace} />
       <trace from=".R_SLEEP_PD > .pin2" to=".DRIVER > .GND2" {...logicTrace} />
 
-      <trace from=".DRIVER > .AOUT1" to=".P_MOTOR_A > .pin1" {...motorTrace} />
-      <trace from=".DRIVER > .AOUT2" to=".P_MOTOR_A > .pin2" {...motorTrace} />
+      <trace
+        from=".DRIVER > .AOUT1"
+        to=".P_MOTOR_A > .pin1"
+        schDisplayLabel="MOTOR_A1"
+        {...motorTrace}
+      />
+      <trace
+        from=".DRIVER > .AOUT2"
+        to=".P_MOTOR_A > .pin2"
+        schDisplayLabel="MOTOR_A2"
+        {...motorTrace}
+      />
       <trace from=".DRIVER > .BOUT1" to=".P_MOTOR_B > .pin1" {...motorTrace} />
-      <trace from=".DRIVER > .BOUT2" to=".P_MOTOR_B > .pin2" {...motorTrace} />
+      <trace
+        from=".DRIVER > .BOUT2"
+        to=".P_MOTOR_B > .pin2"
+        schDisplayLabel="MOTOR_B2"
+        {...motorTrace}
+      />
 
-      <trace from=".DRIVER > .AISEN" to=".R_ISEN_A > .pin1" {...powerTrace} />
-      <trace from=".DRIVER > .BISEN" to=".R_ISEN_B > .pin1" {...powerTrace} />
-      <trace from=".DRIVER > .VCP" to=".C_VCP > .pin1" {...logicTrace} />
-      <trace from=".DRIVER > .VINT" to=".C_VINT > .pin1" {...logicTrace} />
+      <trace
+        from=".DRIVER > .AISEN"
+        to=".R_ISEN_A > .pin1"
+        schDisplayLabel="A_ISEN"
+        {...powerTrace}
+      />
+      <trace
+        from=".DRIVER > .BISEN"
+        to=".R_ISEN_B > .pin1"
+        schDisplayLabel="B_ISEN"
+        {...powerTrace}
+      />
+      <trace
+        from=".DRIVER > .VCP"
+        to=".C_VCP > .pin1"
+        schDisplayLabel="VCP"
+        {...logicTrace}
+      />
+      <trace
+        from=".DRIVER > .VINT"
+        to=".C_VINT > .pin1"
+        schDisplayLabel="VINT"
+        {...logicTrace}
+      />
       <trace
         from=".R_SLEEP_PD > .pin1"
         to=".DRIVER > .nSleep"
@@ -324,6 +408,7 @@ export default function Rp2040MotorController() {
       <trace
         from=".R_FAULT_PU > .pin1"
         to=".DRIVER > .nFault"
+        schDisplayLabel="nFAULT"
         {...logicTrace}
       />
       <trace

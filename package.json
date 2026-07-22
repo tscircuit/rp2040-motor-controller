@@ -29,5 +29,8 @@
     "@tscircuit/common": "^0.0.43",
     "@tscircuit/footprinter": "^0.0.380",
     "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#26867a1"
+  },
+  "patchedDependencies": {
+    "@tscircuit/common@0.0.43": "patches/@tscircuit%2Fcommon@0.0.43.patch"
   }
 }

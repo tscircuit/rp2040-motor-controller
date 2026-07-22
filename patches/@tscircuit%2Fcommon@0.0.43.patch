@@ -1,0 +1,88 @@
+diff --git a/dist/index.js b/dist/index.js
+index 6d992c076f833021312a135a1418bbab859d46d2..6f578ad8cb31f8a1c76efd9f6ddf81cda8d7a2de 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -2476,7 +2476,9 @@ var Microcontroller_RP2040 = (_a) => {
+         footprint: "0402",
+         schSectionName: schSections.controls,
+         pcbX: 10.4,
+-        pcbY: -5.5
++        pcbY: -5.5,
++        schX: 10.44,
++        schY: -5.64
+       }
+     ),
+     /* @__PURE__ */ jsx20(
+@@ -2610,7 +2612,10 @@ var Microcontroller_RP2040 = (_a) => {
+         schSectionName: schSections.usb,
+         pcbX: 0,
+         pcbY: 31,
+-        pcbRotation: 180
++        pcbRotation: 180,
++        schX: 12.44,
++        schY: -6.36,
++        schWidth: 1.6
+       }
+     ),
+     /* @__PURE__ */ jsx20(
+@@ -2636,7 +2641,7 @@ var Microcontroller_RP2040 = (_a) => {
+         pcbX: 3.4,
+         pcbY: 9.5,
+         pcbRotation: 90,
+-        schX: 18.02,
++        schX: 18.11,
+         schY: -4.16,
+         schHeight: 1
+       }
+@@ -2667,7 +2672,9 @@ var Microcontroller_RP2040 = (_a) => {
+         name: "SW_BOOT",
+         schSectionName: schSections.controls,
+         pcbX: 8.6,
+-        pcbY: 21.8
++        pcbY: 21.8,
++        schX: 11.35,
++        schY: -7.84
+       }
+     ),
+     /* @__PURE__ */ jsx20(
+@@ -2701,7 +2708,8 @@ var Microcontroller_RP2040 = (_a) => {
+         pcbY: 24.8,
+         pcbRotation: 90,
+         schX: 10.2,
+-        schY: -18.52
++        schY: -18.52,
++        schRotation: 180
+       }
+     ),
+     /* @__PURE__ */ jsx20(
+@@ -2751,7 +2759,9 @@ var Microcontroller_RP2040 = (_a) => {
+         footprint: "0402",
+         schSectionName: schSections.usb,
+         pcbX: -0.2,
+-        pcbY: 25.6
++        pcbY: 25.6,
++        schX: 8.89,
++        schY: -7.36
+       }
+     ),
+     /* @__PURE__ */ jsx20(
+@@ -2806,7 +2816,7 @@ var Microcontroller_RP2040 = (_a) => {
+         pcbX: -2.8,
+         pcbY: 26.3,
+         pcbRotation: 90,
+-        schX: 15.47,
++        schX: 15.38,
+         schY: -3.96
+       }
+     ),
+@@ -2920,7 +2930,9 @@ var Microcontroller_RP2040 = (_a) => {
+         padDiameter: "1.1mm",
+         schSectionName: schSections.debug,
+         pcbX: 2,
+-        pcbY: -31
++        pcbY: -31,
++        schX: 7.2,
++        schY: -18.305
+       }
+     ),
+     /* @__PURE__ */ jsx20(
