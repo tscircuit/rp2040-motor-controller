@@ -3,21 +3,51 @@ import { CH224K } from "./imports/CH224K";
 import { DRV8833PWPR } from "./imports/DRV8833PWPR";
 import { TYPE_C_16PIN_2MD_073_ } from "./imports/TYPE_C_16PIN_2MD_073_";
 import { WJ500V_5_08_2P } from "./imports/WJ500V_5_08_2P";
+import { createPhasedPowerTraceExpanderAlgorithm } from "./lib/createPhasedPowerTraceExpanderAlgorithm";
 
 const logicTrace = { thickness: "0.25mm" } as const;
 const powerTrace = { thickness: "1mm" } as const;
 const motorTrace = { thickness: "1mm" } as const;
 
 export default function Rp2040MotorController() {
+  const { initialAlgorithmFn, rerouteAlgorithmFn } =
+    createPhasedPowerTraceExpanderAlgorithm();
+
   return (
     <board
       width="90mm"
       height="75mm"
-      autorouter="auto_local"
+      autorouter={{
+        local: true,
+        groupMode: "subcircuit",
+        algorithmFn: initialAlgorithmFn,
+      }}
       autorouterEffortLevel="10x"
     >
-      <Microcontroller_RP2040 name="MCU" pcbX={-25} schX={-15} />
-      <DRV8833PWPR name="DRIVER" pcbX={11} pcbY={0} schX={8} />
+      <net name="GND" />
+
+      <autoroutingphase
+        reroute
+        region={{ minX: -45, maxX: 45, minY: -37.5, maxY: 37.5 }}
+        autorouter={{
+          local: true,
+          algorithmFn: rerouteAlgorithmFn,
+        }}
+      />
+
+      <Microcontroller_RP2040
+        name="MCU"
+        autorouter="auto_local"
+        pcbX={-25}
+        schX={-15}
+      />
+      <DRV8833PWPR
+        name="DRIVER"
+        pcbX={11}
+        pcbY={0}
+        schX={8}
+        connections={{ GND2: "net.GND" }}
+      />
 
       <TYPE_C_16PIN_2MD_073_
         name="J_MOTOR_USB"
@@ -300,6 +330,27 @@ export default function Rp2040MotorController() {
         from=".R_FAULT_PU > .pin2"
         to=".MCU > .U1 > .IOVDD1"
         {...logicTrace}
+      />
+
+      <copperpour
+        name="GND_TOP"
+        layer="top"
+        connectsTo="net.GND"
+        clearance="0.2mm"
+        padMargin="0.2mm"
+        traceMargin="0.2mm"
+        boardEdgeMargin="0.3mm"
+        coveredWithSolderMask
+      />
+      <copperpour
+        name="GND_BOTTOM"
+        layer="bottom"
+        connectsTo="net.GND"
+        clearance="0.2mm"
+        padMargin="0.2mm"
+        traceMargin="0.2mm"
+        boardEdgeMargin="0.3mm"
+        coveredWithSolderMask
       />
 
       <hole diameter="3.2mm" pcbX={-41} pcbY={33} />
