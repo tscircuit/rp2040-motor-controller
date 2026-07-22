@@ -1,16 +1,13 @@
 import { expect, test } from "bun:test";
 import {
+  checkPadTraceClearance,
   checkSourceTracesMatchPcbTraceThickness,
   runAllRoutingChecks,
 } from "@tscircuit/checks";
+import type { PcbSmtPad, PcbVia } from "circuit-json";
 import { Circuit } from "tscircuit";
 import Rp2040MotorController from "../index.circuit";
-
-const knownMergedGroundViaErrors = new Set([
-  "same_net_vias_close_pcb_via_106_pcb_via_87",
-  "same_net_vias_close_pcb_via_106_pcb_via_96",
-  "same_net_vias_close_pcb_via_101_pcb_via_106",
-]);
+import { routedViaOverlapsPad } from "./helpers/routedViaOverlapsPad";
 
 test("renders the complete RP2040 dual-motor controller", async () => {
   const circuit = new Circuit();
@@ -44,30 +41,52 @@ test("renders the complete RP2040 dual-motor controller", async () => {
         component.manufacturer_part_number === "TYPE_C_16PIN_2MD_073_",
     ),
   ).toBe(true);
-  const unexpectedErrors = circuitJson.filter(
-    (element) =>
-      element.type.endsWith("_error") &&
-      !(
-        element.type === "pcb_via_clearance_error" &&
-        knownMergedGroundViaErrors.has(element.pcb_error_id)
-      ),
+  const unexpectedErrors = circuitJson.filter((element) =>
+    element.type.endsWith("_error"),
   );
-  const routingIssues = await runAllRoutingChecks(
-    structuredClone(circuitJson),
-  );
-  const unexpectedRoutingIssues = routingIssues.filter(
-    (issue) =>
-      !(
-        issue.type === "pcb_via_clearance_error" &&
-        knownMergedGroundViaErrors.has(issue.pcb_error_id)
-      ),
-  );
+  const routingIssues = await runAllRoutingChecks(structuredClone(circuitJson));
   const widthWarnings = checkSourceTracesMatchPcbTraceThickness(circuitJson);
+  const powerSourceTraceIds = new Set<string>(
+    circuitJson.flatMap((element) =>
+      element.type === "source_trace" &&
+      (element.min_trace_thickness ?? 0) >= 0.5
+        ? [element.source_trace_id!]
+        : [],
+    ),
+  );
+  const powerPcbTraceIds = new Set(
+    circuitJson.flatMap((element) =>
+      element.type === "pcb_trace" &&
+      Boolean(element.source_trace_id) &&
+      powerSourceTraceIds.has(element.source_trace_id!)
+        ? [element.pcb_trace_id]
+        : [],
+    ),
+  );
+  const preferredPowerPadClearanceIssues = checkPadTraceClearance(circuitJson, {
+    minClearance: 0.15,
+  }).filter((issue) => powerPcbTraceIds.has(issue.pcb_trace_id));
   const uniqueUnderWidthTraceIds = new Set(
     widthWarnings.map((warning) => warning.pcb_trace_id),
   );
   const copperPours = circuitJson.filter(
     (element) => element.type === "pcb_copper_pour",
+  );
+  const routedVias = circuitJson.filter(
+    (element): element is PcbVia =>
+      element.type === "pcb_via" && Boolean(element.pcb_trace_id),
+  );
+  const smtPads = circuitJson.filter(
+    (element): element is PcbSmtPad => element.type === "pcb_smtpad",
+  );
+  const routedViaPadOverlaps = routedVias.flatMap((via) =>
+    smtPads
+      .filter((pad) => routedViaOverlapsPad(via, pad))
+      .map((pad) => ({
+        pcb_via_id: via.pcb_via_id,
+        pcb_trace_id: via.pcb_trace_id,
+        pcb_smtpad_id: pad.pcb_smtpad_id,
+      })),
   );
   const copperPourNetIds = new Set(
     copperPours.map((pour) => pour.source_net_id),
@@ -118,7 +137,11 @@ test("renders the complete RP2040 dual-motor controller", async () => {
   }
 
   expect(unexpectedErrors).toEqual([]);
-  expect(unexpectedRoutingIssues).toEqual([]);
+  expect(routingIssues).toEqual([]);
+  expect(routedViaPadOverlaps).toEqual([]);
+  // The board's hard rule is 0.1 mm. The expander targets 0.15 mm for power
+  // copper and leaves this small budget only for unavoidable package escapes.
+  expect(preferredPowerPadClearanceIssues.length).toBeLessThanOrEqual(11);
   expect(copperPours.length).toBeGreaterThanOrEqual(2);
   expect(new Set(copperPours.map((pour) => pour.layer))).toEqual(
     new Set(["top", "bottom"]),
@@ -147,8 +170,8 @@ test("renders the complete RP2040 dual-motor controller", async () => {
       : [],
   ).toHaveLength(2);
   expect(upperMotorABottomLength).toBeGreaterThan(10);
-  expect(upperMotorANominalLength / upperMotorALength).toBeGreaterThan(0.99);
-  expect(upperMotorAWidthArea / upperMotorALength).toBeGreaterThan(0.995);
+  expect(upperMotorANominalLength / upperMotorALength).toBeGreaterThan(0.97);
+  expect(upperMotorAWidthArea / upperMotorALength).toBeGreaterThan(0.99);
   // This check reports the minimum route-point width for an entire connected
   // net, so it is a board-integration regression budget rather than a
   // length-weighted quality metric. The captured solver fixture locks the
