@@ -1,0 +1,74 @@
+diff --git a/dist/index.js b/dist/index.js
+index 426a75acc2138c6c2a3fb0308c46bec927326760..444bc987d6987ebcac7aaaf85b0ad85d21d544f8 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -32966,7 +32966,7 @@ var SchematicSection = class _SchematicSection extends PrimitiveComponent2 {
+     };
+   }
+   // Pass null to compute bounds for components with no schSectionName
+-  _computeSectionBounds(board, sectionName) {
++  _computeSectionBounds(board, sectionName, schematicSheetId) {
+     const { db } = this.root;
+     const members = board.getDescendants().filter((c) => c.getSchematicSectionName() === sectionName);
+     if (members.length === 0) return null;
+@@ -32976,6 +32976,7 @@ var SchematicSection = class _SchematicSection extends PrimitiveComponent2 {
+       if (!schematicComponentId) continue;
+       const schComp = db.schematic_component.get(schematicComponentId);
+       if (!schComp) continue;
++      if (schComp.schematic_sheet_id !== schematicSheetId) continue;
+       const hw = schComp.size.width / 2;
+       const hh = schComp.size.height / 2;
+       positions.push({
+@@ -32992,7 +32993,10 @@ var SchematicSection = class _SchematicSection extends PrimitiveComponent2 {
+     if (this.root?.schematicDisabled) return;
+     const board = this.root?._getBoard();
+     if (!board) return;
+-    const allSections = board.getDescendants().filter((c) => c instanceof _SchematicSection);
++    const schematicSheetId = this._resolveSchematicSheetId();
++    const allSections = board.getDescendants().filter(
++      (component) => component instanceof _SchematicSection && component._resolveSchematicSheetId() === schematicSheetId
++    );
+     if (allSections[0] !== this) return;
+     const { db } = this.root;
+     const PADDING = 0.5;
+@@ -33002,7 +33006,8 @@ var SchematicSection = class _SchematicSection extends PrimitiveComponent2 {
+     const namedSectionsWithBounds = allSections.map((section) => {
+       const bounds = section._computeSectionBounds(
+         board,
+-        section._parsedProps.name
++        section._parsedProps.name,
++        schematicSheetId
+       );
+       if (!bounds) return null;
+       return {
+@@ -33017,7 +33022,11 @@ var SchematicSection = class _SchematicSection extends PrimitiveComponent2 {
+         }
+       };
+     }).filter((s) => s !== null);
+-    const unsectionedBounds = this._computeSectionBounds(board, null);
++    const unsectionedBounds = this._computeSectionBounds(
++      board,
++      null,
++      schematicSheetId
++    );
+     const allSectionsWithBounds = [...namedSectionsWithBounds];
+     if (unsectionedBounds)
+       allSectionsWithBounds.push({
+@@ -33052,7 +33061,7 @@ var SchematicSection = class _SchematicSection extends PrimitiveComponent2 {
+         stroke_width: STROKE_WIDTH,
+         color: "#000000",
+         is_dashed: false,
+-        schematic_sheet_id: this._resolveSchematicSheetId()
++        schematic_sheet_id: schematicSheetId
+       });
+     }
+     const hDividers = dividers.filter(
+@@ -33081,7 +33090,7 @@ var SchematicSection = class _SchematicSection extends PrimitiveComponent2 {
+           y: topBoundary - LABEL_PADDING
+         },
+         rotation: 0,
+-        schematic_sheet_id: this._resolveSchematicSheetId()
++        schematic_sheet_id: schematicSheetId
+       });
+     }
+   }

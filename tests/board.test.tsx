@@ -19,6 +19,20 @@ test("renders the complete RP2040 dual-motor controller", async () => {
   const sourceComponents = circuitJson.filter(
     (element) => element.type === "source_component",
   );
+  const schematicSheets = circuitJson
+    .filter((element) => element.type === "schematic_sheet")
+    .sort((a, b) => (a.sheet_index ?? 0) - (b.sheet_index ?? 0));
+  const schematicComponents = circuitJson.filter(
+    (element) => element.type === "schematic_component",
+  );
+  const schematicSheetIds = new Set(
+    schematicSheets.map((sheet) => sheet.schematic_sheet_id),
+  );
+  const schematicText = new Set(
+    circuitJson.flatMap((element) =>
+      element.type === "schematic_text" ? [element.text] : [],
+    ),
+  );
 
   expect(
     sourceComponents.some(
@@ -41,6 +55,50 @@ test("renders the complete RP2040 dual-motor controller", async () => {
         component.manufacturer_part_number === "TYPE_C_16PIN_2MD_073_",
     ),
   ).toBe(true);
+  expect(
+    schematicSheets.map((sheet) => ({
+      name: sheet.name,
+      displayName: (sheet as typeof sheet & { display_name?: string })
+        .display_name,
+      sheetIndex: sheet.sheet_index,
+    })),
+  ).toEqual([
+    {
+      name: "controller",
+      displayName: "RP2040 Controller",
+      sheetIndex: 1,
+    },
+    {
+      name: "motor_driver",
+      displayName: "Dual Motor Driver",
+      sheetIndex: 2,
+    },
+    {
+      name: "motor_power",
+      displayName: "USB-C PD Motor Power",
+      sheetIndex: 3,
+    },
+  ]);
+  expect(
+    schematicComponents.every(
+      (component) =>
+        Boolean(component.schematic_sheet_id) &&
+        schematicSheetIds.has(component.schematic_sheet_id!),
+    ),
+  ).toBe(true);
+  expect(schematicComponents.length).toBeGreaterThan(0);
+  expect([...schematicText]).toEqual(
+    expect.arrayContaining([
+      "RP2040 & Power",
+      "Programming USB-C & QSPI",
+      "Clock",
+      "Status & SWD Debug",
+      "H-Bridge, Power & Control",
+      "Motor Outputs",
+      "USB-C PD Input & Negotiation",
+      "Power Filtering",
+    ]),
+  );
   const unexpectedErrors = circuitJson.filter((element) =>
     element.type.endsWith("_error"),
   );
@@ -179,9 +237,7 @@ test("renders the complete RP2040 dual-motor controller", async () => {
   expect(upperMotorAPcbTrace?.type).toBe("pcb_trace");
   expect(
     upperMotorAPcbTrace?.type === "pcb_trace"
-      ? upperMotorAPcbTrace.route.filter(
-          (point) => point.route_type === "via",
-        )
+      ? upperMotorAPcbTrace.route.filter((point) => point.route_type === "via")
       : [],
   ).toHaveLength(2);
   expect(upperMotorABottomLength).toBeGreaterThan(10);

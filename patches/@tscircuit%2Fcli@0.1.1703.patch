@@ -1,0 +1,61 @@
+diff --git a/dist/cli/main.js b/dist/cli/main.js
+index b89184fe728b95447344e6ba1c46fda2e4c0f38f..0c5eeb288f6212f6d3cfd00b080e34c802c8bba1 100755
+--- a/dist/cli/main.js
++++ b/dist/cli/main.js
+@@ -283079,7 +283079,8 @@ var schematicComponentToPlacement = (schematicComponent, circuitJson, schematicB
+   sourceComponentName: getSourceComponentName(circuitJson, schematicComponent.source_component_id),
+   schematicComponentId: schematicComponent.schematic_component_id,
+   schematicSymbolId: schematicBox?.schematic_symbol_id ?? schematicComponent.schematic_symbol_id,
+-  subcircuitId: schematicComponent.subcircuit_id ?? schematicBox?.subcircuit_id
++  subcircuitId: schematicComponent.subcircuit_id ?? schematicBox?.subcircuit_id,
++  schematicSheetId: schematicComponent.schematic_sheet_id ?? schematicBox?.schematic_sheet_id
+ });
+ var schematicBoxToPlacement = (schematicBox, circuitJson) => ({
+   lineItemType: "SchematicBoxPlacement",
+@@ -283091,7 +283092,8 @@ var schematicBoxToPlacement = (schematicBox, circuitJson) => ({
+   ...getSourceComponentMetadata(schematicBox, circuitJson),
+   schematicComponentId: schematicBox.schematic_component_id,
+   schematicSymbolId: schematicBox.schematic_symbol_id,
+-  subcircuitId: schematicBox.subcircuit_id
++  subcircuitId: schematicBox.subcircuit_id,
++  schematicSheetId: schematicBox.schematic_sheet_id
+ });
+ var buildSolverContext = (circuitJson) => {
+   const schematicBoxes = circuitJson.filter(isSchematicBox);
+@@ -283367,6 +283369,8 @@ class SchematicBoxOverlapSolver extends BaseSolver7 {
+     return `<OverlapCorrectionSuggestion ${attrs.join(" ")} />`;
+   }
+   getComponentOverlap(firstComponent, secondComponent) {
++    if (firstComponent.schematicSheetId !== secondComponent.schematicSheetId)
++      return null;
+     const a3 = this.getCenteredRectBounds(firstComponent);
+     const b3 = this.getCenteredRectBounds(secondComponent);
+     const overlapWidth = Math.min(a3.right, b3.right) - Math.max(a3.left, b3.left);
+@@ -284306,6 +284310,8 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
+     }
+   }
+   detectPair(compA, compB) {
++    if (compA.schematicSheetId !== compB.schematicSheetId)
++      return;
+     this.rawCollisions.push(...this.detectLabelLabel(compA, compB));
+     this.rawCollisions.push(...this.detectBoxLabel(compA, compB));
+     this.rawCollisions.push(...this.detectBoxLabel(compB, compA));
+@@ -284526,7 +284532,8 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
+       portPositions.push({
+         componentId: port.schematic_component_id,
+         cx: port.center.x,
+-        cy: port.center.y
++        cy: port.center.y,
++        schematicSheetId: port.schematic_sheet_id
+       });
+     }
+     const result = new Map;
+@@ -284537,7 +284544,7 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
+       if (!label.anchor_position)
+         continue;
+       const { x: anchorX, y: anchorY } = label.anchor_position;
+-      const matches = portPositions.filter((port) => Math.hypot(port.cx - anchorX, port.cy - anchorY) < MATCH_EPSILON);
++      const matches = portPositions.filter((port) => port.schematicSheetId === label.schematic_sheet_id && Math.hypot(port.cx - anchorX, port.cy - anchorY) < MATCH_EPSILON);
+       if (matches.length === 0)
+         continue;
+       const componentIds = new Set(matches.map((match) => match.componentId));

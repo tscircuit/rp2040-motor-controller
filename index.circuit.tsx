@@ -9,6 +9,23 @@ const logicTrace = { thickness: "0.25mm" } as const;
 const powerTrace = { thickness: "1mm" } as const;
 const motorTrace = { thickness: "1mm" } as const;
 
+const schematicSheets = {
+  controller: "controller",
+  motorDriver: "motor_driver",
+  motorPower: "motor_power",
+} as const;
+
+const schematicSections = {
+  controllerCore: "rp2040",
+  controllerUsb: "usb",
+  controllerClock: "clock",
+  controllerStatus: "status",
+  driverCore: "motor_driver_core",
+  motorOutputs: "motor_driver_outputs",
+  pdNegotiation: "motor_power_pd_negotiation",
+  pdFiltering: "motor_power_filtering",
+} as const;
+
 export default function Rp2040MotorController() {
   const { initialAlgorithmFn, rerouteAlgorithmFn } =
     createPhasedPowerTraceExpanderAlgorithm();
@@ -26,6 +43,59 @@ export default function Rp2040MotorController() {
     >
       <net name="GND" />
 
+      <schematicsheet
+        name={schematicSheets.controller}
+        displayName="RP2040 Controller"
+        sheetIndex={1}
+      >
+        <schematicsection
+          name={schematicSections.controllerCore}
+          displayName="RP2040 & Power"
+        />
+        <schematicsection
+          name={schematicSections.controllerUsb}
+          displayName="Programming USB-C & QSPI"
+        />
+        <schematicsection
+          name={schematicSections.controllerClock}
+          displayName="Clock"
+        />
+        <schematicsection
+          name={schematicSections.controllerStatus}
+          displayName="Status & SWD Debug"
+        />
+      </schematicsheet>
+
+      <schematicsheet
+        name={schematicSheets.motorDriver}
+        displayName="Dual Motor Driver"
+        sheetIndex={2}
+      >
+        <schematicsection
+          name={schematicSections.driverCore}
+          displayName="H-Bridge, Power & Control"
+        />
+        <schematicsection
+          name={schematicSections.motorOutputs}
+          displayName="Motor Outputs"
+        />
+      </schematicsheet>
+
+      <schematicsheet
+        name={schematicSheets.motorPower}
+        displayName="USB-C PD Motor Power"
+        sheetIndex={3}
+      >
+        <schematicsection
+          name={schematicSections.pdNegotiation}
+          displayName="USB-C PD Input & Negotiation"
+        />
+        <schematicsection
+          name={schematicSections.pdFiltering}
+          displayName="Power Filtering"
+        />
+      </schematicsheet>
+
       <autoroutingphase
         reroute
         region={{ minX: -45, maxX: 45, minY: -37.5, maxY: 37.5 }}
@@ -39,15 +109,20 @@ export default function Rp2040MotorController() {
         name="MCU"
         autorouter="auto_local"
         schAutoLayoutEnabled
+        schSheetName={schematicSheets.controller}
         pcbX={-25}
-        schX={-15}
+        schX={-0.9}
+        schY={9.5}
       />
       <DRV8833PWPR
         name="DRIVER"
         pcbX={11}
         pcbY={0}
-        schX={8}
+        schX={-4}
+        schY={-0.5}
         schHeight={1.8}
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
         connections={{ GND2: "net.GND" }}
       />
 
@@ -57,8 +132,10 @@ export default function Rp2040MotorController() {
         pcbX={28}
         pcbY={31}
         pcbRotation={180}
-        schX={26}
-        schY={15}
+        schX={6.5}
+        schY={-0.5}
+        schSheetName={schematicSheets.motorPower}
+        schSectionName={schematicSections.pdNegotiation}
       />
       <CH224K
         name="U_PD"
@@ -66,25 +143,31 @@ export default function Rp2040MotorController() {
         pcbX={18}
         pcbY={23}
         pcbRotation={90}
-        schX={18}
-        schY={15}
+        schX={-1.5}
+        schY={-0.5}
         schHeight={1.2}
+        schSheetName={schematicSheets.motorPower}
+        schSectionName={schematicSections.pdNegotiation}
       />
       <WJ500V_5_08_2P
         name="P_MOTOR_A"
         pcbX={34}
         pcbY={5}
         pcbRotation={90}
-        schX={21}
-        schY={3}
+        schX={9}
+        schY={2.5}
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.motorOutputs}
       />
       <WJ500V_5_08_2P
         name="P_MOTOR_B"
         pcbX={34}
         pcbY={-15}
         pcbRotation={90}
-        schX={21}
-        schY={-5}
+        schX={9}
+        schY={-5.5}
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.motorOutputs}
       />
 
       <capacitor
@@ -93,9 +176,11 @@ export default function Rp2040MotorController() {
         footprint="1206"
         pcbX={20}
         pcbY={31}
-        schX={23}
-        schY={11}
+        schX={3}
+        schY={-7.5}
         schOrientation="vertical"
+        schSheetName={schematicSheets.motorPower}
+        schSectionName={schematicSections.pdFiltering}
       />
       <capacitor
         name="C_PD_VDD"
@@ -103,9 +188,11 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={11}
         pcbY={25}
-        schX={13}
-        schY={17}
+        schX={-3}
+        schY={-7.5}
         schOrientation="vertical"
+        schSheetName={schematicSheets.motorPower}
+        schSectionName={schematicSections.pdFiltering}
       />
       <resistor
         name="R_PD_VDD"
@@ -113,8 +200,10 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={15}
         pcbY={29}
-        schX={14}
-        schY={20}
+        schX={-5.5}
+        schY={4.5}
+        schSheetName={schematicSheets.motorPower}
+        schSectionName={schematicSections.pdNegotiation}
       />
       <resistor
         name="R_PD_VBUS"
@@ -122,8 +211,10 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={24}
         pcbY={21}
-        schX={22}
-        schY={20}
+        schX={2.5}
+        schY={4.5}
+        schSheetName={schematicSheets.motorPower}
+        schSectionName={schematicSections.pdNegotiation}
       />
       <resistor
         name="R_PD_CFG1"
@@ -131,8 +222,10 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={11}
         pcbY={19}
-        schX={13}
-        schY={12}
+        schX={-6.5}
+        schY={-3.5}
+        schSheetName={schematicSheets.motorPower}
+        schSectionName={schematicSections.pdNegotiation}
       />
 
       <capacitor
@@ -141,9 +234,11 @@ export default function Rp2040MotorController() {
         footprint="1206"
         pcbX={16}
         pcbY={8}
-        schX={5.48}
-        schY={10}
+        schX={-6.52}
+        schY={9.5}
         schOrientation="vertical"
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
       />
       <capacitor
         name="C_VM_HF"
@@ -151,9 +246,11 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={12}
         pcbY={8}
-        schX={21.52}
-        schY={10}
+        schX={5.5}
+        schY={9.5}
         schOrientation="vertical"
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
       />
       <capacitor
         name="C_VCP"
@@ -161,9 +258,11 @@ export default function Rp2040MotorController() {
         footprint="0402"
         pcbX={8}
         pcbY={6}
-        schX={11}
-        schY={6}
+        schX={-1}
+        schY={5.5}
         schOrientation="vertical"
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
       />
       <capacitor
         name="C_VINT"
@@ -171,9 +270,11 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={5}
         pcbY={2}
-        schX={11}
-        schY={2}
+        schX={-1}
+        schY={1.5}
         schOrientation="vertical"
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
       />
 
       <resistor
@@ -182,8 +283,10 @@ export default function Rp2040MotorController() {
         footprint="2512"
         pcbX={5}
         pcbY={-9}
-        schX={11}
-        schY={-7}
+        schX={-1}
+        schY={-7.5}
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
       />
       <resistor
         name="R_ISEN_B"
@@ -191,8 +294,10 @@ export default function Rp2040MotorController() {
         footprint="2512"
         pcbX={17}
         pcbY={-9}
-        schX={15}
-        schY={-7}
+        schX={3}
+        schY={-7.5}
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
       />
       <resistor
         name="R_SLEEP_PD"
@@ -200,8 +305,10 @@ export default function Rp2040MotorController() {
         footprint="0402"
         pcbX={5}
         pcbY={-3}
-        schX={3}
-        schY={-5}
+        schX={-9}
+        schY={-5.5}
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
       />
       <resistor
         name="R_FAULT_PU"
@@ -209,8 +316,10 @@ export default function Rp2040MotorController() {
         footprint="0402"
         pcbX={5}
         pcbY={-5}
-        schX={3}
-        schY={-9}
+        schX={-9}
+        schY={-9.5}
+        schSheetName={schematicSheets.motorDriver}
+        schSectionName={schematicSections.driverCore}
       />
 
       <trace from=".MCU > .U1 > .GPIO0" to=".DRIVER > .AIN1" {...logicTrace} />
@@ -368,7 +477,12 @@ export default function Rp2040MotorController() {
         schDisplayLabel="MOTOR_A2"
         {...motorTrace}
       />
-      <trace from=".DRIVER > .BOUT1" to=".P_MOTOR_B > .pin1" {...motorTrace} />
+      <trace
+        from=".DRIVER > .BOUT1"
+        to=".P_MOTOR_B > .pin1"
+        schDisplayLabel="MOTOR_B1"
+        {...motorTrace}
+      />
       <trace
         from=".DRIVER > .BOUT2"
         to=".P_MOTOR_B > .pin2"
