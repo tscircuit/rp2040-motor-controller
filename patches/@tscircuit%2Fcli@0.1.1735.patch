@@ -1,5 +1,5 @@
 diff --git a/dist/cli/main.js b/dist/cli/main.js
-index b89184fe728b95447344e6ba1c46fda2e4c0f38f..0c5eeb288f6212f6d3cfd00b080e34c802c8bba1 100755
+index c6fa6e65979fa9e718b9be1783335034a0d96a54..5ecfb940e0cb7c75137244a7629c6e3cda08c657 100755
 --- a/dist/cli/main.js
 +++ b/dist/cli/main.js
 @@ -283079,7 +283079,8 @@ var schematicComponentToPlacement = (schematicComponent, circuitJson, schematicB

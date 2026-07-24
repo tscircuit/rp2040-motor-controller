@@ -1,5 +1,5 @@
 import {
-  PowerTraceExpanderAutorouter,
+  PowerTraceExpanderSolver,
   SolverAutorouterAdapter,
 } from "@tscircuit/power-trace-expander";
 import {
@@ -11,6 +11,8 @@ import {
 type InitialBoardSolver = InstanceType<
   (typeof SOLVERS)["AutoroutingPipelineSolver7_MultiGraph"]
 >;
+
+const UPPER_P_MOTOR_A_CONNECTION = "source_trace_147";
 
 class InitialBoardAutorouter extends SolverAutorouterAdapter<InitialBoardSolver> {
   constructor(
@@ -31,6 +33,87 @@ class InitialBoardAutorouter extends SolverAutorouterAdapter<InitialBoardSolver>
       getPhase: (activeSolver) => activeSolver.getCurrentPhase(),
       onComplete,
     });
+  }
+}
+
+/**
+ * Gives the constrained upper P_MOTOR_A escape first choice of the bottom
+ * corridor, then improves the rest of the board around that result.
+ */
+class PrioritizedPowerTraceExpanderSolver {
+  readonly input: SimpleRouteJson;
+  activeSolver: PowerTraceExpanderSolver;
+  stage: "priority" | "whole-board" | "complete";
+  solved = false;
+  failed = false;
+  error: string | null = null;
+  iterations = 0;
+
+  constructor(input: SimpleRouteJson) {
+    this.input = structuredClone(input);
+    const hasUpperMotorA = input.connections.some(
+      (connection) => connection.name === UPPER_P_MOTOR_A_CONNECTION,
+    );
+    this.stage = hasUpperMotorA ? "priority" : "whole-board";
+    this.activeSolver = new PowerTraceExpanderSolver(
+      this.input,
+      hasUpperMotorA
+        ? { onlyConnectionNames: [UPPER_P_MOTOR_A_CONNECTION] }
+        : {},
+    );
+  }
+
+  get progress() {
+    if (this.stage === "priority") return this.activeSolver.progress * 0.1;
+    if (this.stage === "whole-board") {
+      return 0.1 + this.activeSolver.progress * 0.9;
+    }
+    return 1;
+  }
+
+  get stats(): Record<string, unknown> {
+    return {
+      ...this.activeSolver.stats,
+      phase:
+        this.stage === "complete"
+          ? "complete"
+          : `${this.stage}:${String(this.activeSolver.stats.phase ?? "fix")}`,
+    };
+  }
+
+  step() {
+    if (this.solved || this.failed) return;
+    const before = this.activeSolver.iterations;
+    this.activeSolver.step();
+    this.iterations += this.activeSolver.iterations - before;
+    if (this.activeSolver.failed) {
+      this.failed = true;
+      this.error = this.activeSolver.error;
+      return;
+    }
+    if (!this.activeSolver.solved) return;
+    if (this.stage === "priority") {
+      this.activeSolver = new PowerTraceExpanderSolver({
+        ...structuredClone(this.input),
+        traces: this.activeSolver.getOutput(),
+      });
+      this.stage = "whole-board";
+      return;
+    }
+    this.stage = "complete";
+    this.solved = true;
+  }
+
+  solve() {
+    while (!this.solved && !this.failed) this.step();
+  }
+
+  getOutput() {
+    return this.activeSolver.getOutput();
+  }
+
+  preview() {
+    return this.activeSolver.preview();
   }
 }
 
@@ -63,7 +146,13 @@ export const createPhasedPowerTraceExpanderAlgorithm = () => {
         ...structuredClone(initialTraces),
       ],
     };
-    return new PowerTraceExpanderAutorouter(expansionProblem);
+    const solver = new PrioritizedPowerTraceExpanderSolver(expansionProblem);
+    return new SolverAutorouterAdapter({
+      input: expansionProblem,
+      solver,
+      getOutput: (activeSolver) => activeSolver.getOutput(),
+      getPhase: (activeSolver) => String(activeSolver.stats.phase ?? "fix"),
+    });
   };
 
   return { initialAlgorithmFn, rerouteAlgorithmFn };

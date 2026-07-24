@@ -24,17 +24,21 @@
     "@types/react": "^19.2.17",
     "bun-match-svg": "0.0.15",
     "circuit-to-svg": "0.0.391",
-    "tscircuit": "^0.0.2116",
+    "tscircuit": "^0.0.2142",
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@tscircuit/common": "^0.0.43",
+    "@tscircuit/common": "^0.0.45",
     "@tscircuit/footprinter": "^0.0.380",
-    "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#26867a1"
+    "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#20a08c8c1cf9d94798333cc4bcdcb8c85bd20418"
+  },
+  "overrides": {
+    "@tscircuit/capacity-autorouter": "0.0.716",
+    "@tscircuit/core": "0.0.1470"
   },
   "patchedDependencies": {
-    "@tscircuit/common@0.0.43": "patches/@tscircuit%2Fcommon@0.0.43.patch",
     "@tscircuit/core@0.0.1470": "patches/@tscircuit%2Fcore@0.0.1470.patch",
-    "@tscircuit/cli@0.1.1703": "patches/@tscircuit%2Fcli@0.1.1703.patch"
+    "@tscircuit/cli@0.1.1735": "patches/@tscircuit%2Fcli@0.1.1735.patch",
+    "@tscircuit/common@0.0.45": "patches/@tscircuit%2Fcommon@0.0.45.patch"
   }
 }
