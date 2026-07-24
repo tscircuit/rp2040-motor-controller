@@ -111,8 +111,8 @@ export default function Rp2040MotorController() {
         schAutoLayoutEnabled
         schSheetName={schematicSheets.controller}
         pcbX={-25}
-        schX={-0.9}
-        schY={9.5}
+        schX={-3.1}
+        schY={8.5}
       />
       <DRV8833PWPR
         name="DRIVER"
