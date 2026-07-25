@@ -16,10 +16,6 @@ const schematicSheets = {
 } as const;
 
 const schematicSections = {
-  controllerCore: "rp2040",
-  controllerUsb: "usb",
-  controllerClock: "clock",
-  controllerStatus: "status",
   driverCore: "motor_driver_core",
   motorOutputs: "motor_driver_outputs",
   pdNegotiation: "motor_power_pd_negotiation",
@@ -47,24 +43,7 @@ export default function Rp2040MotorController() {
         name={schematicSheets.controller}
         displayName="RP2040 Controller"
         sheetIndex={1}
-      >
-        <schematicsection
-          name={schematicSections.controllerCore}
-          displayName="RP2040 & Power"
-        />
-        <schematicsection
-          name={schematicSections.controllerUsb}
-          displayName="Programming USB-C & QSPI"
-        />
-        <schematicsection
-          name={schematicSections.controllerClock}
-          displayName="Clock"
-        />
-        <schematicsection
-          name={schematicSections.controllerStatus}
-          displayName="Status & SWD Debug"
-        />
-      </schematicsheet>
+      />
 
       <schematicsheet
         name={schematicSheets.motorDriver}

@@ -1,8 +1,8 @@
 diff --git a/dist/cli/main.js b/dist/cli/main.js
-index c6fa6e65979fa9e718b9be1783335034a0d96a54..5ecfb940e0cb7c75137244a7629c6e3cda08c657 100755
+index 0e6c57e0fa7659f38d488720cd2e8d15a42eec2a..951b2543b692000d84364bc92883427fe891caec 100755
 --- a/dist/cli/main.js
 +++ b/dist/cli/main.js
-@@ -283079,7 +283079,8 @@ var schematicComponentToPlacement = (schematicComponent, circuitJson, schematicB
+@@ -283086,7 +283086,8 @@ var schematicComponentToPlacement = (schematicComponent, circuitJson, schematicB
    sourceComponentName: getSourceComponentName(circuitJson, schematicComponent.source_component_id),
    schematicComponentId: schematicComponent.schematic_component_id,
    schematicSymbolId: schematicBox?.schematic_symbol_id ?? schematicComponent.schematic_symbol_id,
@@ -12,7 +12,7 @@ index c6fa6e65979fa9e718b9be1783335034a0d96a54..5ecfb940e0cb7c75137244a7629c6e3c
  });
  var schematicBoxToPlacement = (schematicBox, circuitJson) => ({
    lineItemType: "SchematicBoxPlacement",
-@@ -283091,7 +283092,8 @@ var schematicBoxToPlacement = (schematicBox, circuitJson) => ({
+@@ -283098,7 +283099,8 @@ var schematicBoxToPlacement = (schematicBox, circuitJson) => ({
    ...getSourceComponentMetadata(schematicBox, circuitJson),
    schematicComponentId: schematicBox.schematic_component_id,
    schematicSymbolId: schematicBox.schematic_symbol_id,
@@ -22,7 +22,7 @@ index c6fa6e65979fa9e718b9be1783335034a0d96a54..5ecfb940e0cb7c75137244a7629c6e3c
  });
  var buildSolverContext = (circuitJson) => {
    const schematicBoxes = circuitJson.filter(isSchematicBox);
-@@ -283367,6 +283369,8 @@ class SchematicBoxOverlapSolver extends BaseSolver7 {
+@@ -283374,6 +283376,8 @@ class SchematicBoxOverlapSolver extends BaseSolver7 {
      return `<OverlapCorrectionSuggestion ${attrs.join(" ")} />`;
    }
    getComponentOverlap(firstComponent, secondComponent) {
@@ -31,7 +31,7 @@ index c6fa6e65979fa9e718b9be1783335034a0d96a54..5ecfb940e0cb7c75137244a7629c6e3c
      const a3 = this.getCenteredRectBounds(firstComponent);
      const b3 = this.getCenteredRectBounds(secondComponent);
      const overlapWidth = Math.min(a3.right, b3.right) - Math.max(a3.left, b3.left);
-@@ -284306,6 +284310,8 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
+@@ -284313,6 +284317,8 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
      }
    }
    detectPair(compA, compB) {
@@ -40,7 +40,7 @@ index c6fa6e65979fa9e718b9be1783335034a0d96a54..5ecfb940e0cb7c75137244a7629c6e3c
      this.rawCollisions.push(...this.detectLabelLabel(compA, compB));
      this.rawCollisions.push(...this.detectBoxLabel(compA, compB));
      this.rawCollisions.push(...this.detectBoxLabel(compB, compA));
-@@ -284526,7 +284532,8 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
+@@ -284533,7 +284539,8 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
        portPositions.push({
          componentId: port.schematic_component_id,
          cx: port.center.x,
@@ -50,7 +50,7 @@ index c6fa6e65979fa9e718b9be1783335034a0d96a54..5ecfb940e0cb7c75137244a7629c6e3c
        });
      }
      const result = new Map;
-@@ -284537,7 +284544,7 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
+@@ -284544,7 +284551,7 @@ class ComponentNetLabelCollisionSolver extends BaseSolver13 {
        if (!label.anchor_position)
          continue;
        const { x: anchorX, y: anchorY } = label.anchor_position;
