@@ -100,7 +100,7 @@ test("renders the complete RP2040 dual-motor controller", async () => {
       "Status & SWD Debug",
       "H-Bridge, Power & Control",
       "Motor Outputs",
-      "USB-C PD Input & Negotiation",
+      "USB-C PD Negotiation",
       "Power Filtering",
     ]),
   );

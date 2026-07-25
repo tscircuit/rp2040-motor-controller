@@ -88,7 +88,7 @@ export default function Rp2040MotorController() {
       >
         <schematicsection
           name={schematicSections.pdNegotiation}
-          displayName="USB-C PD Input & Negotiation"
+          displayName="USB-C PD Negotiation"
         />
         <schematicsection
           name={schematicSections.pdFiltering}
@@ -118,9 +118,11 @@ export default function Rp2040MotorController() {
         name="DRIVER"
         pcbX={11}
         pcbY={0}
-        schX={-4}
-        schY={-0.5}
+        schX={-4.2}
+        schY={-1.5}
         schHeight={1.8}
+        schMarginLeft={1.4}
+        schMarginRight={0.5}
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
         connections={{ GND2: "net.GND" }}
@@ -133,7 +135,7 @@ export default function Rp2040MotorController() {
         pcbY={31}
         pcbRotation={180}
         schX={6.5}
-        schY={-0.5}
+        schY={-1.5}
         schSheetName={schematicSheets.motorPower}
         schSectionName={schematicSections.pdNegotiation}
       />
@@ -143,9 +145,10 @@ export default function Rp2040MotorController() {
         pcbX={18}
         pcbY={23}
         pcbRotation={90}
-        schX={-1.5}
-        schY={-0.5}
+        schX={-2.2}
+        schY={-1.5}
         schHeight={1.2}
+        schMarginRight={0.8}
         schSheetName={schematicSheets.motorPower}
         schSectionName={schematicSections.pdNegotiation}
       />
@@ -188,11 +191,9 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={11}
         pcbY={25}
-        schX={-3}
-        schY={-7.5}
         schOrientation="vertical"
         schSheetName={schematicSheets.motorPower}
-        schSectionName={schematicSections.pdFiltering}
+        schSectionName={schematicSections.pdNegotiation}
       />
       <resistor
         name="R_PD_VDD"
@@ -200,8 +201,8 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={15}
         pcbY={29}
-        schX={-5.5}
-        schY={4.5}
+        schMarginX={0.25}
+        schMarginY={0.2}
         schSheetName={schematicSheets.motorPower}
         schSectionName={schematicSections.pdNegotiation}
       />
@@ -211,8 +212,8 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={24}
         pcbY={21}
-        schX={2.5}
-        schY={4.5}
+        schMarginX={0.25}
+        schMarginY={0.2}
         schSheetName={schematicSheets.motorPower}
         schSectionName={schematicSections.pdNegotiation}
       />
@@ -222,8 +223,8 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={11}
         pcbY={19}
-        schX={-6.5}
-        schY={-3.5}
+        schMarginX={0.25}
+        schMarginY={0.2}
         schSheetName={schematicSheets.motorPower}
         schSectionName={schematicSections.pdNegotiation}
       />
@@ -234,8 +235,8 @@ export default function Rp2040MotorController() {
         footprint="1206"
         pcbX={16}
         pcbY={8}
-        schX={-6.52}
-        schY={9.5}
+        schMarginX={0.15}
+        schMarginY={0.25}
         schOrientation="vertical"
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
@@ -246,8 +247,8 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={12}
         pcbY={8}
-        schX={5.5}
-        schY={9.5}
+        schMarginX={0.15}
+        schMarginY={0.25}
         schOrientation="vertical"
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
@@ -258,8 +259,8 @@ export default function Rp2040MotorController() {
         footprint="0402"
         pcbX={8}
         pcbY={6}
-        schX={-1}
-        schY={5.5}
+        schMarginX={0.15}
+        schMarginY={0.25}
         schOrientation="vertical"
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
@@ -270,8 +271,8 @@ export default function Rp2040MotorController() {
         footprint="0603"
         pcbX={5}
         pcbY={2}
-        schX={-1}
-        schY={1.5}
+        schMarginX={0.15}
+        schMarginY={0.25}
         schOrientation="vertical"
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
@@ -283,8 +284,6 @@ export default function Rp2040MotorController() {
         footprint="2512"
         pcbX={5}
         pcbY={-9}
-        schX={-1}
-        schY={-7.5}
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
       />
@@ -294,8 +293,6 @@ export default function Rp2040MotorController() {
         footprint="2512"
         pcbX={17}
         pcbY={-9}
-        schX={3}
-        schY={-7.5}
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
       />
@@ -305,8 +302,8 @@ export default function Rp2040MotorController() {
         footprint="0402"
         pcbX={5}
         pcbY={-3}
-        schX={-9}
-        schY={-5.5}
+        schX={-8}
+        schY={-4.5}
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
       />
@@ -316,8 +313,8 @@ export default function Rp2040MotorController() {
         footprint="0402"
         pcbX={5}
         pcbY={-5}
-        schX={-9}
-        schY={-9.5}
+        schX={-8}
+        schY={-7}
         schSheetName={schematicSheets.motorDriver}
         schSectionName={schematicSections.driverCore}
       />
@@ -376,7 +373,12 @@ export default function Rp2040MotorController() {
         {...logicTrace}
       />
       <trace from=".U_PD > .VDD" to=".C_PD_VDD > .pin1" {...logicTrace} />
-      <trace from=".U_PD > .CFG1" to=".R_PD_CFG1 > .pin1" {...logicTrace} />
+      <trace
+        from=".U_PD > .CFG1"
+        to=".R_PD_CFG1 > .pin1"
+        schDisplayLabel="CFG1"
+        {...logicTrace}
+      />
 
       <trace
         from=".J_MOTOR_USB > .A5"
@@ -517,6 +519,7 @@ export default function Rp2040MotorController() {
       <trace
         from=".R_SLEEP_PD > .pin1"
         to=".DRIVER > .nSleep"
+        schDisplayLabel="nSLEEP"
         {...logicTrace}
       />
       <trace
