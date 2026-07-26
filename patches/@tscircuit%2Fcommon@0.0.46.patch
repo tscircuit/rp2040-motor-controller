@@ -1,5 +1,5 @@
 diff --git a/dist/index.js b/dist/index.js
-index 8cca3643e716c563e29084ea419c9cab5e2ba833..005d67992a795530535eb38a3bd8130000a3d6f3 100644
+index 8cca3643e716c563e29084ea419c9cab5e2ba833..17e5826da81f0d69f2fce4d923f713be7840ea8c 100644
 --- a/dist/index.js
 +++ b/dist/index.js
 @@ -2304,15 +2304,15 @@ var adcRefLabel = {
@@ -102,8 +102,8 @@ index 8cca3643e716c563e29084ea419c9cab5e2ba833..005d67992a795530535eb38a3bd81300
 +        schOrientation: "vertical",
 +        pcbX: -4,
 +        pcbY: -5,
-+        schX: -8.15,
-+        schY: -0.86
++        schX: -11.3,
++        schY: -6.4
 +      }
 +    ),
 +    /* @__PURE__ */ jsx20(
@@ -116,8 +116,8 @@ index 8cca3643e716c563e29084ea419c9cab5e2ba833..005d67992a795530535eb38a3bd81300
 +        schOrientation: "vertical",
 +        pcbX: -3,
 +        pcbY: 6,
-+        schX: -6.225,
-+        schY: -0.86
++        schX: -9.6,
++        schY: -6.4
 +      }
 +    ),
 +    /* @__PURE__ */ jsx20(
@@ -131,8 +131,8 @@ index 8cca3643e716c563e29084ea419c9cab5e2ba833..005d67992a795530535eb38a3bd81300
 +        pcbRotation: -90,
 +        pcbX: -8,
 +        pcbY: -1,
-+        schX: -4.3,
-+        schY: -0.86
++        schX: -7.9,
++        schY: -6.4
 +      }
 +    ),
 +    /* @__PURE__ */ jsx20(
@@ -145,8 +145,8 @@ index 8cca3643e716c563e29084ea419c9cab5e2ba833..005d67992a795530535eb38a3bd81300
 +        schOrientation: "vertical",
 +        pcbX: -4,
 +        pcbY: -6,
-+        schX: -8.15,
-+        schY: -2.46
++        schX: -6.2,
++        schY: -6.4
 +      }
 +    ),
      /* @__PURE__ */ jsx20(
@@ -163,8 +163,8 @@ index 8cca3643e716c563e29084ea419c9cab5e2ba833..005d67992a795530535eb38a3bd81300
          pcbY: -10,
 -        schX: -9.6,
 -        schY: 0
-+        schX: -6.225,
-+        schY: -2.46
++        schX: -4.5,
++        schY: -6.4
        }
      ),
      /* @__PURE__ */ jsx20(
@@ -179,8 +179,8 @@ index 8cca3643e716c563e29084ea419c9cab5e2ba833..005d67992a795530535eb38a3bd81300
          pcbY: 1.6,
 -        schX: -7.2,
 -        schY: 2.31
-+        schX: -4.3,
-+        schY: -2.46
++        schX: -2.8,
++        schY: -6.4
        }
      ),
      /* @__PURE__ */ jsx20(

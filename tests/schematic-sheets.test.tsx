@@ -113,7 +113,7 @@ test("renders the controller, motor driver, and motor power sheets", async () =>
   );
   const rp2040LeftEdge = rp2040.center.x - rp2040.size.width / 2;
 
-  expect([...iovddRows.values()].sort()).toEqual([3, 3]);
+  expect([...iovddRows.values()]).toEqual([6]);
   expect(rp2040LeftEdge - nearestIovddCapacitorRightEdge).toBeGreaterThan(0.75);
 
   const localDecouplingDistances: Array<
