@@ -24,7 +24,7 @@
     "@types/react": "^19.2.17",
     "bun-match-svg": "0.0.15",
     "circuit-to-svg": "0.0.391",
-    "tscircuit": "^0.0.2150",
+    "tscircuit": "^0.0.2153",
     "typescript": "^5.0.0"
   },
   "dependencies": {
@@ -34,10 +34,10 @@
   },
   "overrides": {
     "@tscircuit/capacity-autorouter": "0.0.716",
-    "@tscircuit/core": "0.0.1520"
+    "@tscircuit/core": "0.0.1521"
   },
   "patchedDependencies": {
     "@tscircuit/common@0.0.46": "patches/@tscircuit%2Fcommon@0.0.46.patch",
-    "@tscircuit/cli@0.1.1747": "patches/@tscircuit%2Fcli@0.1.1747.patch"
+    "@tscircuit/cli@0.1.1748": "patches/@tscircuit%2Fcli@0.1.1748.patch"
   }
 }
