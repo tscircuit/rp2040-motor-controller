@@ -12,7 +12,19 @@ type InitialBoardSolver = InstanceType<
   (typeof SOLVERS)["AutoroutingPipelineSolver7_MultiGraph"]
 >;
 
-const UPPER_P_MOTOR_A_CONNECTION = "source_trace_147";
+const UPPER_P_MOTOR_A_TERMINAL_PIN = { x: 34, y: 2.46 };
+const ENDPOINT_TOLERANCE_MM = 0.01;
+
+const findUpperMotorAConnectionName = (input: SimpleRouteJson) =>
+  input.connections.find((connection) =>
+    connection.pointsToConnect.some(
+      (point) =>
+        Math.abs(point.x - UPPER_P_MOTOR_A_TERMINAL_PIN.x) <=
+          ENDPOINT_TOLERANCE_MM &&
+        Math.abs(point.y - UPPER_P_MOTOR_A_TERMINAL_PIN.y) <=
+          ENDPOINT_TOLERANCE_MM,
+    ),
+  )?.name;
 
 class InitialBoardAutorouter extends SolverAutorouterAdapter<InitialBoardSolver> {
   constructor(
@@ -51,14 +63,12 @@ class PrioritizedPowerTraceExpanderSolver {
 
   constructor(input: SimpleRouteJson) {
     this.input = structuredClone(input);
-    const hasUpperMotorA = input.connections.some(
-      (connection) => connection.name === UPPER_P_MOTOR_A_CONNECTION,
-    );
-    this.stage = hasUpperMotorA ? "priority" : "whole-board";
+    const upperMotorAConnectionName = findUpperMotorAConnectionName(input);
+    this.stage = upperMotorAConnectionName ? "priority" : "whole-board";
     this.activeSolver = new PowerTraceExpanderSolver(
       this.input,
-      hasUpperMotorA
-        ? { onlyConnectionNames: [UPPER_P_MOTOR_A_CONNECTION] }
+      upperMotorAConnectionName
+        ? { onlyConnectionNames: [upperMotorAConnectionName] }
         : {},
     );
   }

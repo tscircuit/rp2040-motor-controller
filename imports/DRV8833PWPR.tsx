@@ -24,6 +24,13 @@ export const DRV8833PWPR = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        VM: { requiresPower: true },
+        GND1: { requiresGround: true },
+        GND2: { requiresGround: true },
+        nFault: { canUseOpenDrain: true, needsExternalPullup: true },
+        nSleep: { needsExternalPulldown: true },
+      }}
       supplierPartNumbers={{
         jlcpcb: ["C50506"],
       }}

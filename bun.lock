@@ -23,6 +23,7 @@
     },
   },
   "patchedDependencies": {
+    "@tscircuit/common@0.0.48": "patches/@tscircuit%2Fcommon@0.0.48.patch",
     "@tscircuit/cli@0.1.1757": "patches/@tscircuit%2Fcli@0.1.1757.patch",
   },
   "overrides": {
