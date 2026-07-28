@@ -3,7 +3,7 @@ import { convertCircuitJsonToStackedSchematicSheetsSvg } from "circuit-to-svg";
 import { Circuit } from "tscircuit";
 import Rp2040MotorController from "../index.circuit";
 
-test("renders the controller, motor driver, and motor power sheets", async () => {
+test("renders the controller, programming, motor driver, and motor power sheets", async () => {
   const circuit = new Circuit({ platform: { pcbDisabled: true } });
   circuit.add(<Rp2040MotorController />);
 
@@ -17,13 +17,20 @@ test("renders the controller, motor driver, and motor power sheets", async () =>
   if (!controllerSheetId) {
     throw new Error("Controller schematic sheet is missing");
   }
+  const programmingSheetId = circuitJson.flatMap((element) =>
+    element.type === "schematic_sheet" &&
+    element.name === "controller_programming"
+      ? [element.schematic_sheet_id]
+      : [],
+  )[0];
+  if (!programmingSheetId) {
+    throw new Error("Programming schematic sheet is missing");
+  }
   const schematicUnitsPerMillimeter = 1.1 / 10.16;
   const innerHalfWidth =
-    (297 * schematicUnitsPerMillimeter) / 2 -
-    5 * schematicUnitsPerMillimeter;
+    (297 * schematicUnitsPerMillimeter) / 2 - 5 * schematicUnitsPerMillimeter;
   const innerHalfHeight =
-    (210 * schematicUnitsPerMillimeter) / 2 -
-    5 * schematicUnitsPerMillimeter;
+    (210 * schematicUnitsPerMillimeter) / 2 - 5 * schematicUnitsPerMillimeter;
   const componentFrameClearance = 0.5;
   const sourceComponentNames = new Map(
     circuitJson.flatMap((element) =>
@@ -71,8 +78,7 @@ test("renders the controller, motor driver, and motor power sheets", async () =>
   expect(componentsOutsideSheetFrames).toEqual([]);
   expect(
     circuitJson.filter(
-      (element) =>
-        element.type === "schematic_element_outside_sheet_warning",
+      (element) => element.type === "schematic_element_outside_sheet_warning",
     ),
   ).toEqual([]);
 
@@ -91,6 +97,25 @@ test("renders the controller, motor driver, and motor power sheets", async () =>
       first.center.y - second.center.y,
     );
   };
+
+  expect(getSchematicComponent("U1").schematic_sheet_id).toBe(
+    controllerSheetId,
+  );
+  for (const programmingComponentName of [
+    "J_USB",
+    "U2",
+    "U3",
+    "C_FLASH",
+    "C_USB_VDD",
+    "C_VBUS",
+    "C_USB",
+    "R_USB1",
+    "R_USB2",
+  ]) {
+    expect(
+      getSchematicComponent(programmingComponentName).schematic_sheet_id,
+    ).toBe(programmingSheetId);
+  }
 
   const iovddCapacitors = [
     "C_IOVDD1",
@@ -116,6 +141,25 @@ test("renders the controller, motor driver, and motor power sheets", async () =>
   expect([...iovddRows.values()]).toEqual([6]);
   expect(rp2040LeftEdge - nearestIovddCapacitorRightEdge).toBeGreaterThan(0.75);
 
+  const crystal = getSchematicComponent("Y1");
+  expect(crystal.center.x).toBeCloseTo(-7.5, 1);
+  expect(crystal.center.y).toBeCloseTo(-5, 1);
+
+  const controllerSheet = circuitJson.find(
+    (element) =>
+      element.type === "schematic_sheet" &&
+      element.schematic_sheet_id === controllerSheetId,
+  );
+  if (!controllerSheet) {
+    throw new Error("Controller schematic sheet geometry is missing");
+  }
+  for (const switchName of ["SW_BOOT", "SW_RUN"]) {
+    const schematicSwitch = getSchematicComponent(switchName);
+    const switchTop =
+      schematicSwitch.center.y + schematicSwitch.size.height / 2;
+    expect(switchTop).toBeLessThan(controllerSheet.center.y - 0.5);
+  }
+
   const localDecouplingDistances: Array<
     [capacitorName: string, targetName: string, maximumDistance: number]
   > = [
@@ -125,17 +169,20 @@ test("renders the controller, motor driver, and motor power sheets", async () =>
     ["C_USB", "J_USB", 5],
     ["C_XIN", "Y1", 2.5],
     ["C_XOUT", "Y1", 2.5],
-    ["C_VINT", "DRIVER", 3],
-    ["C_VCP", "DRIVER", 3],
-    ["C_VM_HF", "DRIVER", 4],
-    ["C_VM_BULK", "DRIVER", 5],
+    ["C_VINT", "DRIVER", 6],
+    ["C_VCP", "DRIVER", 6],
+    ["C_VM_HF", "DRIVER", 6],
+    ["C_VM_BULK", "DRIVER", 7],
     ["C_PD_VDD", "U_PD", 3],
   ];
-  for (const [capacitorName, targetName, maximumDistance] of
-    localDecouplingDistances) {
-    expect(
-      distanceBetweenComponents(capacitorName, targetName),
-    ).toBeLessThan(maximumDistance);
+  for (const [
+    capacitorName,
+    targetName,
+    maximumDistance,
+  ] of localDecouplingDistances) {
+    expect(distanceBetweenComponents(capacitorName, targetName)).toBeLessThan(
+      maximumDistance,
+    );
   }
 
   expect(

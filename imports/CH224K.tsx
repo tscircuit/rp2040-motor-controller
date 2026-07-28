@@ -18,6 +18,10 @@ export const CH224K = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
+      pinAttributes={{
+        VDD: { requiresPower: true },
+        GND: { requiresGround: true },
+      }}
       supplierPartNumbers={{
         jlcpcb: ["C970725"],
       }}
