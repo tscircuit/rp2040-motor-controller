@@ -1,0 +1,22 @@
+diff --git a/dist/index.js b/dist/index.js
+index 6698dff40be5eb45be4864c9fcbd25c4273e2b55..9647c02ed72a3350c4cac1f40793a1a105a624e4 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -25694,6 +25694,7 @@ var Group3 = class extends NormalComponent3 {
+       outputPcbTraces: output_pcb_traces,
+       pcbTraceIdsToReplace: pcb_trace_ids_to_be_replaced
+     });
++    const insertedPhysicalViaKeys = /* @__PURE__ */ new Set();
+     for (const pcb_trace of output_pcb_traces) {
+       if (pcb_trace.type !== "pcb_trace") continue;
+       pcb_trace.subcircuit_id ??= this.subcircuit_id;
+@@ -25771,6 +25772,9 @@ var Group3 = class extends NormalComponent3 {
+             const routedViaPoint = point6;
+             const fromLayer = point6.from_layer;
+             const toLayer = point6.to_layer;
++            const physicalViaKey = `${subcircuitConnectivityMapKey ?? inputConnectionName ?? ""}:${point6.x.toFixed(9)}:${point6.y.toFixed(9)}`;
++            if (insertedPhysicalViaKeys.has(physicalViaKey)) continue;
++            insertedPhysicalViaKeys.add(physicalViaKey);
+             db.pcb_via.insert({
+               pcb_trace_id: pcb_trace.pcb_trace_id,
+               x: point6.x,

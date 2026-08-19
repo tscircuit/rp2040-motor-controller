@@ -169,10 +169,11 @@ test("renders the controller, programming, motor driver, and motor power sheets"
     ["C_USB", "J_USB", 5],
     ["C_XIN", "Y1", 2.5],
     ["C_XOUT", "Y1", 2.5],
-    ["C_VINT", "DRIVER", 6],
-    ["C_VCP", "DRIVER", 6],
+    ["C_DVDD1", "U1", 6],
+    ["C_DVDD2", "U1", 7],
     ["C_VM_HF", "DRIVER", 6],
     ["C_VM_BULK", "DRIVER", 7],
+    ["C_MOTOR_BULK", "F_MOTOR_VBUS", 10],
     ["C_PD_VDD", "U_PD", 3],
   ];
   for (const [

@@ -11,16 +11,16 @@ const pinLabels = {
   pin8: ["nFault"],
   pin9: ["BIN1"],
   pin10: ["BIN2"],
-  pin11: ["VCP"],
+  pin11: ["TRQ"],
   pin12: ["VM"],
   pin13: ["GND1"],
-  pin14: ["VINT"],
+  pin14: ["MODE"],
   pin15: ["AIN2"],
   pin16: ["AIN1"],
   pin17: ["GND2"],
 } as const;
 
-export const DRV8833PWPR = (props: ChipProps<typeof pinLabels>) => {
+export const DRV8847PWPR = (props: ChipProps<typeof pinLabels>) => {
   return (
     <chip
       pinLabels={pinLabels}
@@ -32,9 +32,9 @@ export const DRV8833PWPR = (props: ChipProps<typeof pinLabels>) => {
         nSleep: { needsExternalPulldown: true },
       }}
       supplierPartNumbers={{
-        jlcpcb: ["C50506"],
+        jlcpcb: ["C544361"],
       }}
-      manufacturerPartNumber="DRV8833PWPR"
+      manufacturerPartNumber="DRV8847PWPR"
       footprint={
         <footprint>
           <smtpad

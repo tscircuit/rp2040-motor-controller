@@ -1,5 +1,6 @@
-export const logicTrace = { thickness: "0.25mm" } as const;
-export const powerTrace = { thickness: "1mm" } as const;
+export const logicTrace = { thickness: "0.15mm" } as const;
+export const powerTrace = { thickness: "0.8mm" } as const;
+export const groundTrace = { thickness: "0.3mm" } as const;
 export const motorTrace = { thickness: "1mm" } as const;
 
 export const schematicSheets = {

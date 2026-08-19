@@ -1,6 +1,7 @@
 import { CH224K } from "../imports/CH224K";
 import { TYPE_C_16PIN_2MD_073_ } from "../imports/TYPE_C_16PIN_2MD_073_";
 import {
+  groundTrace,
   logicTrace,
   powerTrace,
   schematicSections,
@@ -40,7 +41,7 @@ export const MotorPowerPdControllers = () => (
     />
     <CH224K
       name="U_PD"
-      noConnect={["CFG2", "CFG3", "PG"]}
+      noConnect={["CFG2", "CFG3"]}
       pcbX={18}
       pcbY={23}
       pcbRotation={90}
@@ -84,6 +85,7 @@ export const MotorPowerPdPassives = () => (
       name="C_PD_VDD"
       capacitance="1uF"
       footprint="0603"
+      supplierPartNumbers={{ jlcpcb: ["C15849"] }}
       pcbX={22.5}
       pcbY={18.8}
       maxDecouplingTraceLength={10}
@@ -97,6 +99,7 @@ export const MotorPowerPdPassives = () => (
       name="R_PD_VDD"
       resistance="1k"
       footprint="0603"
+      supplierPartNumbers={{ jlcpcb: ["C21190"] }}
       pcbX={15}
       pcbY={29}
       schX={0}
@@ -110,6 +113,7 @@ export const MotorPowerPdPassives = () => (
       name="R_PD_VBUS"
       resistance="10k"
       footprint="0603"
+      supplierPartNumbers={{ jlcpcb: ["C25804"] }}
       pcbX={24}
       pcbY={21}
       schX={1.5}
@@ -123,6 +127,7 @@ export const MotorPowerPdPassives = () => (
       name="R_PD_CFG1"
       resistance="6.8k"
       footprint="0603"
+      supplierPartNumbers={{ jlcpcb: ["C23212"] }}
       pcbX={11}
       pcbY={19}
       schX={-1.5}
@@ -145,9 +150,9 @@ export const MotorPowerPdInputTraces = () => (
     />
     <trace
       name="MOTOR_VBUS_VM"
-      from=".J_MOTOR_USB > .A4B9"
+      from=".F_MOTOR_VBUS > .pin2"
       to=".DRIVER > .VM"
-      schDisplayLabel="VMOTOR"
+      schDisplayLabel="VMOTOR_PROTECTED"
       {...powerTrace}
     />
   </>
@@ -243,7 +248,7 @@ export const MotorPowerPdPrimaryGroundTrace = () => (
       name="MOTOR_USB_GND_A"
       from=".J_MOTOR_USB > .A1B12"
       to=".DRIVER > .GND2"
-      {...powerTrace}
+      {...groundTrace}
     />
   </>
 );
@@ -254,37 +259,37 @@ export const MotorPowerPdConnectorGroundTraces = () => (
       name="MOTOR_USB_GND_JOIN"
       from=".J_MOTOR_USB > .B1A12"
       to=".J_MOTOR_USB > .A1B12"
-      {...powerTrace}
+      {...groundTrace}
     />
     <trace
       name="MOTOR_USB_SHIELD_1"
       from=".J_MOTOR_USB > .EH1"
       to=".J_MOTOR_USB > .A1B12"
-      {...powerTrace}
+      {...groundTrace}
     />
     <trace
       name="MOTOR_USB_SHIELD_2"
       from=".J_MOTOR_USB > .EH2"
       to=".J_MOTOR_USB > .A1B12"
-      {...powerTrace}
+      {...groundTrace}
     />
     <trace
       name="MOTOR_USB_SHIELD_3"
       from=".J_MOTOR_USB > .EH3"
       to=".J_MOTOR_USB > .A1B12"
-      {...powerTrace}
+      {...groundTrace}
     />
     <trace
       name="MOTOR_USB_SHIELD_4"
       from=".J_MOTOR_USB > .EH4"
       to=".J_MOTOR_USB > .A1B12"
-      {...powerTrace}
+      {...groundTrace}
     />
     <trace
       name="PD_GND"
       from=".U_PD > .GND"
       to=".DRIVER > .GND2"
-      {...powerTrace}
+      {...groundTrace}
     />
   </>
 );

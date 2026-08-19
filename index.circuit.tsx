@@ -37,6 +37,7 @@ export default function Rp2040MotorController({
     <board
       width="90mm"
       height="75mm"
+      autorouterEffortLevel="5x"
       autorouter={{
         local: true,
         groupMode: "subcircuit",

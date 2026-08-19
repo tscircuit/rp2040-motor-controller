@@ -23,9 +23,10 @@
   },
   "patchedDependencies": {
     "@tscircuit/common@0.0.48": "patches/@tscircuit%2Fcommon@0.0.48.patch",
+    "@tscircuit/core@0.0.1521": "patches/@tscircuit%2Fcore@0.0.1521.patch",
   },
   "overrides": {
-    "@tscircuit/capacity-autorouter": "0.0.740",
+    "@tscircuit/capacity-autorouter": "0.0.816",
     "@tscircuit/core": "0.0.1521",
   },
   "packages": {
@@ -171,7 +172,7 @@
 
     "@tscircuit/alphabet": ["@tscircuit/alphabet@0.0.25", "", { "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-PWLjptI6AlLEtF/wjN1N8uC+n3G7vtg0j3xKE1fgWHDhahtnlQRqHDrtPSLlkIR9aJjRfjplzLuaUEaCRvJmZA=="],
 
-    "@tscircuit/capacity-autorouter": ["@tscircuit/capacity-autorouter@0.0.740", "", { "dependencies": { "fast-json-stable-stringify": "^2.1.0", "object-hash": "^3.0.0", "stack-svgs": "^0.0.1" } }, "sha512-1EE5tQokPz+QiyGqXutqh1GbghaN3CNOMm5m17hae8CtUtSbQelxK53Zlyco8j5Oz5gU/f/LdoK/mp29EeL+qQ=="],
+    "@tscircuit/capacity-autorouter": ["@tscircuit/capacity-autorouter@0.0.816", "", { "dependencies": { "fast-json-stable-stringify": "^2.1.0", "object-hash": "^3.0.0", "stack-svgs": "^0.0.1" } }, "sha512-Oa3ozkeSEWOMj24SdvSbv1nMzJZ836tZyardkIHBaG9e71nExXc+YlWFApvzsiFcLsim8gVLbEqWRORlyQr8Sg=="],
 
     "@tscircuit/checks": ["@tscircuit/checks@0.0.145", "", { "peerDependencies": { "@flatten-js/core": "*", "@tscircuit/math-utils": "*", "circuit-json": "*", "circuit-json-to-connectivity-map": "*", "typescript": "^5.5.3" } }, "sha512-HKdugkjGSrx4HyyrrtDi4pXmORZGx9kA/4zKRUnk7qqqaIyF7OKXGSKW1nIxv+O2oSHOu4z9lpMCEYkHmPUdrQ=="],
 

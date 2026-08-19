@@ -1,7 +1,89 @@
+diff --git a/node_modules/@tscircuit/common/.bun-tag-286d2fe60fe24faa b/.bun-tag-286d2fe60fe24faa
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-29b4b7ecda379937 b/.bun-tag-29b4b7ecda379937
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-2a7dee8548a00036 b/.bun-tag-2a7dee8548a00036
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-322f30c425f80476 b/.bun-tag-322f30c425f80476
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-3b213935df0bc330 b/.bun-tag-3b213935df0bc330
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-4b0fa68b46e48e5a b/.bun-tag-4b0fa68b46e48e5a
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-4f5eb5a9658b557e b/.bun-tag-4f5eb5a9658b557e
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-57900944094d7711 b/.bun-tag-57900944094d7711
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-6dbffbe05c0e3357 b/.bun-tag-6dbffbe05c0e3357
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-81e0920a47904488 b/.bun-tag-81e0920a47904488
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-8564595d421a97b6 b/.bun-tag-8564595d421a97b6
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-8ffee8df5dc7f570 b/.bun-tag-8ffee8df5dc7f570
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-a5449bb61c57391f b/.bun-tag-a5449bb61c57391f
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-a8dc3f84e6c96ee9 b/.bun-tag-a8dc3f84e6c96ee9
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-b33023173c7d2ad9 b/.bun-tag-b33023173c7d2ad9
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-bad311f5c905ec65 b/.bun-tag-bad311f5c905ec65
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-bb42acbb590446fd b/.bun-tag-bb42acbb590446fd
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-d62d0537cae63ff7 b/.bun-tag-d62d0537cae63ff7
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-d6486175475ea65b b/.bun-tag-d6486175475ea65b
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-d81b9f6f9ce08425 b/.bun-tag-d81b9f6f9ce08425
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-f3d464e001712e3f b/.bun-tag-f3d464e001712e3f
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
+diff --git a/node_modules/@tscircuit/common/.bun-tag-f55dd4e4d4571488 b/.bun-tag-f55dd4e4d4571488
+new file mode 100644
+index 0000000000000000000000000000000000000000..e69de29bb2d1d6434b8b29ae775ad8c2e48c5391
 diff --git a/dist/index.js b/dist/index.js
-index 8d5ce79..1dea4d1 100644
+index 8d5ce791b906a58ab47f2ab26a9ad269732ffb7a..6059154dd3c6f306470f213459cb34f5dc9cf144 100644
 --- a/dist/index.js
 +++ b/dist/index.js
+@@ -2190,12 +2190,12 @@ var X322512MSB4SI = (props) => {
+     "crystal",
+     __spreadValues({
+       frequency: "12MHz",
+-      loadCapacitance: "12pF",
++      loadCapacitance: "10pF",
+       pinVariant: "four_pin",
+       supplierPartNumbers: {
+-        jlcpcb: ["C9002"]
++        jlcpcb: ["C20625731"]
+       },
+-      manufacturerPartNumber: "X322512MSB4SI",
++      manufacturerPartNumber: "ABM8-272-T3",
+       footprint: "crystal",
+       cadModel: {
+         objUrl: "https://modelcdn.tscircuit.com/easyeda_models/assets/C9002.obj?uuid=02485e56ba8d4732a26526d2983fc729",
 @@ -2326,6 +2326,43 @@ var Microcontroller_RP2040 = (_a) => {
      "name",
      "connections"
@@ -55,7 +137,17 @@ index 8d5ce79..1dea4d1 100644
        "schematicsection",
        {
          name: schSections.usb(name),
-@@ -2357,12 +2394,13 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2351,18 +2388,21 @@ var Microcontroller_RP2040 = (_a) => {
+     ),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "Y1_G1", from: ".Y1 > .pin2", to: "net.GND" }, gndLabel)),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "Y1_G2", from: ".Y1 > .pin4", to: "net.GND" }, gndLabel)),
+-    /* @__PURE__ */ jsx20("trace", { name: "USB_DN_B", from: ".J_USB > .B7", to: ".R_USB1 > .pin1" }),
+-    /* @__PURE__ */ jsx20("trace", { name: "USB_DP_B", from: ".J_USB > .B6", to: ".R_USB2 > .pin1" }),
++    /* @__PURE__ */ jsx20("trace", { name: "USB_DN_JOIN", from: ".J_USB > .A7", to: ".J_USB > .B7", maxViaCount: 0 }),
++    /* @__PURE__ */ jsx20("trace", { name: "USB_DN_CONN", from: ".J_USB > .B7", to: ".R_USB1 > .pin1", maxViaCount: 0 }),
++    /* @__PURE__ */ jsx20("trace", { name: "USB_DP_JOIN", from: ".J_USB > .A6", to: ".J_USB > .B6", maxViaCount: 0 }),
++    /* @__PURE__ */ jsx20("trace", { name: "USB_DP_CONN", from: ".J_USB > .B6", to: ".R_USB2 > .pin1", maxViaCount: 0 }),
+     /* @__PURE__ */ jsx20(
        B5819W_SL,
        {
          name: "D_VBUS",
@@ -72,13 +164,23 @@ index 8d5ce79..1dea4d1 100644
          schRotation: 180
        }
      ),
-@@ -2380,14 +2418,15 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2372,7 +2412,8 @@ var Microcontroller_RP2040 = (_a) => {
+       __spreadValues({
+         name: "D_VSYS",
+         from: ".D_VBUS > .cathode",
+-        to: "net.VSYS"
++        to: "net.VSYS",
++        maxViaCount: 0
+       }, vsysLabel)
+     ),
+     /* @__PURE__ */ jsx20(
+@@ -2381,13 +2422,16 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_3V3_EN",
          resistance: "100k",
--        footprint: "0402",
+         footprint: "0402",
 -        schSectionName: schSections.power(name),
-+        footprint: resistor0402Footprint(),
++        supplierPartNumbers: { jlcpcb: ["C25741"] },
++        manufacturerPartNumber: "0402WGF1003TCE",
 +        schSheetName: programmingSchSheetName,
 +        schSectionName: schSections.usb(name),
          pcbX: -4.7,
@@ -92,118 +194,140 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2404,7 +2443,7 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2395,7 +2439,8 @@ var Microcontroller_RP2040 = (_a) => {
+       __spreadValues({
+         name: "EN_VSYS",
+         from: ".R_3V3_EN > .pin1",
+-        to: "net.VSYS"
++        to: "net.VSYS",
++        maxViaCount: 0
+       }, vsysLabel)
+     ),
+     /* @__PURE__ */ jsx20("trace", { name: "EN_R", from: ".R_3V3_EN > .pin2", to: ".U3 > .EN" }),
+@@ -2405,9 +2450,11 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_IOVDD1",
          capacitance: "100nF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        manufacturerPartNumber: "CL05B104KO5NNNC",
          schSectionName: schSections.rp2040(name),
          schOrientation: "vertical",
-         pcbX: -4,
-@@ -2418,7 +2457,7 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+-        pcbX: -4,
++        pcbX: -4.4,
+         pcbY: -5,
+         schX: -11.3,
+         schY: -6.4
+@@ -2419,6 +2466,8 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_IOVDD2",
          capacitance: "100nF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        manufacturerPartNumber: "CL05B104KO5NNNC",
          schSectionName: schSections.rp2040(name),
          schOrientation: "vertical",
          pcbX: -3,
-@@ -2432,7 +2471,7 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2433,6 +2482,8 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_IOVDD3",
          capacitance: "100nF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        manufacturerPartNumber: "CL05B104KO5NNNC",
          schSectionName: schSections.rp2040(name),
          schOrientation: "vertical",
          pcbRotation: -90,
-@@ -2447,7 +2486,7 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2448,9 +2499,11 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_IOVDD4",
          capacitance: "100nF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        manufacturerPartNumber: "CL05B104KO5NNNC",
          schSectionName: schSections.rp2040(name),
          schOrientation: "vertical",
-         pcbX: -4,
-@@ -2461,7 +2500,7 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+-        pcbX: -4,
++        pcbX: -4.4,
+         pcbY: -6,
+         schX: -6.2,
+         schY: -6.4
+@@ -2462,6 +2515,8 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_IOVDD5",
          capacitance: "100nF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        manufacturerPartNumber: "CL05B104KO5NNNC",
          schSectionName: schSections.rp2040(name),
          schOrientation: "vertical",
          pcbRotation: -90,
-@@ -2476,7 +2515,7 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2477,6 +2532,8 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_IOVDD6",
          capacitance: "100nF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        manufacturerPartNumber: "CL05B104KO5NNNC",
          schSectionName: schSections.rp2040(name),
          schOrientation: "vertical",
          pcbX: -8,
-@@ -2526,12 +2565,12 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2527,11 +2584,13 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_RUN",
          resistance: "10k",
--        footprint: "0402",
-+        footprint: resistor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C25744"] },
++        manufacturerPartNumber: "0402WGF1002TCE",
          schSectionName: schSections.controls(name),
          pcbX: 10.4,
          pcbY: -5.5,
 -        schX: 12.5,
 -        schY: -11
-+        schX: 15.9,
++        schX: 14.4,
 +        schY: -12.1
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2539,12 +2578,15 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2540,11 +2599,16 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_FLASH",
          capacitance: "100nF",
--        footprint: "0402",
+         footprint: "0402",
 -        schSectionName: schSections.flash(name),
-+        footprint: capacitor0402Footprint(),
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        maxDecouplingTraceLength: 1.3,
 +        schSheetName: programmingSchSheetName,
 +        schSectionName: schSections.usb(name),
          schOrientation: "vertical",
-         pcbX: -5.5,
-         pcbY: 10.8,
+-        pcbX: -5.5,
+-        pcbY: 10.8,
 -        pcbRotation: 180
-+        pcbRotation: 180,
++        pcbX: -0.4,
++        pcbY: 7.65,
++        pcbRotation: -90,
 +        schX: 13.1,
 +        schY: -4.5
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2552,11 +2594,14 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2553,10 +2617,16 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_USB_VDD",
          capacitance: "100nF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        maxDecouplingTraceLength: 1.5,
 +        schSheetName: programmingSchSheetName,
          schSectionName: schSections.usb(name),
          schOrientation: "vertical",
-         pcbX: 7.2,
+-        pcbX: 7.2,
 -        pcbY: 14.5
-+        pcbY: 14.5,
++        pcbX: 0.4,
++        pcbY: 5.7,
++        pcbRotation: 90,
 +        schX: 3.1,
 +        schY: -4
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2564,11 +2609,13 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2565,10 +2635,14 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_ADC",
          capacitance: "100nF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        manufacturerPartNumber: "CL05B104KO5NNNC",
          schSectionName: schSections.power(name),
          schOrientation: "vertical",
          pcbX: 8,
@@ -214,7 +338,29 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2630,17 +2677,41 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2586,7 +2660,7 @@ var Microcontroller_RP2040 = (_a) => {
+       __spreadValues({
+         name: "FLSH_3V3",
+         from: ".C_FLASH > .pin1",
+-        to: "net.V3V3"
++        to: ".U2 > .VCC"
+       }, v3v3Label)
+     ),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "FLSH_G", from: ".C_FLASH > .pin2", to: "net.GND" }, gndLabel)),
+@@ -2613,10 +2687,10 @@ var Microcontroller_RP2040 = (_a) => {
+       __spreadValues({
+         name: "UVDD_3V3",
+         from: ".C_USB_VDD > .pin1",
+-        to: "net.V3V3"
++        to: ".U1 > .USB_VDD"
+       }, v3v3Label)
+     ),
+-    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "UVDD_G", from: ".C_USB_VDD > .pin2", to: "net.GND" }, gndLabel)),
++    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "UVDD_G", from: ".C_USB_VDD > .pin2", to: "net.GND", maxViaCount: 0 }, gndLabel)),
+     /* @__PURE__ */ jsx20(
+       "trace",
+       __spreadValues({
+@@ -2630,17 +2704,41 @@ var Microcontroller_RP2040 = (_a) => {
        TYPE_C_16PIN_2MD_073_,
        {
          name: "J_USB",
@@ -262,7 +408,7 @@ index 8d5ce79..1dea4d1 100644
          }
        }
      ),
-@@ -2648,30 +2719,82 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2648,30 +2746,82 @@ var Microcontroller_RP2040 = (_a) => {
        RP2040,
        {
          name: "U1",
@@ -313,18 +459,21 @@ index 8d5ce79..1dea4d1 100644
        {
          name: "U2",
 -        schSectionName: schSections.flash(name),
+-        pcbX: 3.4,
+-        pcbY: 9.5,
+-        pcbRotation: 90,
+-        schX: 17.5,
+-        schY: -4.16,
+-        schHeight: 1.6,
 +        pinAttributes: {
 +          VCC: { requiresPower: true },
 +          GND: { requiresGround: true }
 +        },
 +        schSheetName: programmingSchSheetName,
 +        schSectionName: schSections.usb(name),
-         pcbX: 3.4,
-         pcbY: 9.5,
-         pcbRotation: 90,
--        schX: 17.5,
--        schY: -4.16,
--        schHeight: 1.6,
++        pcbX: -3,
++        pcbY: 8,
++        pcbRotation: -90,
 +        schX: 13.1,
 +        schY: -8.3,
 +        schWidth: 2.8,
@@ -354,7 +503,7 @@ index 8d5ce79..1dea4d1 100644
          }
        }
      ),
-@@ -2679,13 +2802,38 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2679,13 +2829,38 @@ var Microcontroller_RP2040 = (_a) => {
        AP2112K_3_3TRG1,
        {
          name: "U3",
@@ -397,9 +546,12 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2695,8 +2843,8 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2693,10 +2868,10 @@ var Microcontroller_RP2040 = (_a) => {
+       {
+         name: "Y1",
          schSectionName: schSections.clock(name),
-         pcbX: -0.5,
+-        pcbX: -0.5,
++        pcbX: -1.2,
          pcbY: -6,
 -        schX: 1.025,
 -        schY: -12.5
@@ -408,7 +560,7 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2706,8 +2854,8 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2706,8 +2881,8 @@ var Microcontroller_RP2040 = (_a) => {
          schSectionName: schSections.controls(name),
          pcbX: 8.6,
          pcbY: 21.8,
@@ -419,18 +571,18 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2718,8 +2866,8 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2718,8 +2893,8 @@ var Microcontroller_RP2040 = (_a) => {
          pcbX: 5.5,
          pcbY: -12.5,
          pcbRotation: 90,
 -        schX: 12.5,
 -        schY: -9.4
-+        schX: 15.9,
++        schX: 15,
 +        schY: -11
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2731,8 +2879,8 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2731,8 +2906,8 @@ var Microcontroller_RP2040 = (_a) => {
          pcbX: 10,
          pcbY: 4.2,
          pcbRotation: 90,
@@ -441,7 +593,7 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2744,8 +2892,8 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2744,8 +2919,8 @@ var Microcontroller_RP2040 = (_a) => {
          pcbX: -9.8,
          pcbY: 24.8,
          pcbRotation: 90,
@@ -452,12 +604,12 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2753,13 +2901,13 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2754,12 +2929,14 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_BOOT",
          resistance: "10k",
--        footprint: "0402",
-+        footprint: resistor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C25744"] },
++        manufacturerPartNumber: "0402WGF1002TCE",
          schSectionName: schSections.controls(name),
          pcbX: 12,
          pcbY: 17.8,
@@ -469,12 +621,12 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2767,13 +2915,13 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2768,12 +2945,14 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_LED",
          resistance: "330",
--        footprint: "0402",
-+        footprint: resistor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C25104"] },
++        manufacturerPartNumber: "0402WGF3300TCE",
          schSectionName: schSections.status(name),
          pcbX: 7.2,
          pcbY: 1.2,
@@ -486,12 +638,12 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2781,14 +2929,14 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2782,13 +2961,15 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_PWR_LED",
          resistance: "330",
--        footprint: "0402",
-+        footprint: resistor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C25104"] },
++        manufacturerPartNumber: "0402WGF3300TCE",
          schSectionName: schSections.status(name),
          pcbX: -6.2,
          pcbY: 24.8,
@@ -504,12 +656,12 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2796,12 +2944,13 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2797,11 +2978,14 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_CC1",
          resistance: "5.1k",
--        footprint: "0402",
-+        footprint: resistor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C25905"] },
++        manufacturerPartNumber: "0402WGF5101TCE",
 +        schSheetName: programmingSchSheetName,
          schSectionName: schSections.usb(name),
          pcbX: -0.2,
@@ -521,12 +673,12 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2809,10 +2958,13 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2810,9 +2994,14 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_CC2",
          resistance: "5.1k",
--        footprint: "0402",
-+        footprint: resistor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C25905"] },
++        manufacturerPartNumber: "0402WGF5101TCE",
 +        schSheetName: programmingSchSheetName,
          schSectionName: schSections.usb(name),
          pcbX: 3.6,
@@ -537,141 +689,207 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2820,13 +2972,14 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2821,12 +3010,14 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_USB1",
          resistance: "27",
--        footprint: "0402",
-+        footprint: resistor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C25100"] },
 +        schSheetName: programmingSchSheetName,
          schSectionName: schSections.usb(name),
-         pcbX: 3.4,
-         pcbY: 22.5,
-         pcbRotation: 90,
+-        pcbX: 3.4,
+-        pcbY: 22.5,
+-        pcbRotation: 90,
 -        schX: 15.3,
 -        schY: -6.1
++        pcbX: 4.3,
++        pcbY: 5.4,
++        pcbRotation: 180,
 +        schX: 5.6,
 +        schY: -12
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2834,13 +2987,14 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2835,12 +3026,14 @@ var Microcontroller_RP2040 = (_a) => {
          name: "R_USB2",
          resistance: "27",
--        footprint: "0402",
-+        footprint: resistor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C25100"] },
 +        schSheetName: programmingSchSheetName,
          schSectionName: schSections.usb(name),
-         pcbX: 2.4,
-         pcbY: 16.5,
-         pcbRotation: -90,
+-        pcbX: 2.4,
+-        pcbY: 16.5,
+-        pcbRotation: -90,
 -        schX: 14.96,
 -        schY: -8.08
++        pcbX: 4.3,
++        pcbY: 6.7,
++        pcbRotation: 180,
 +        schX: 13.1,
 +        schY: -12
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2849,11 +3003,14 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2849,11 +3042,15 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_VBUS",
          capacitance: "10uF",
          footprint: "0603",
++        supplierPartNumbers: { jlcpcb: ["C19702"] },
 +        schSheetName: programmingSchSheetName,
          schSectionName: schSections.usb(name),
          schOrientation: "vertical",
-         pcbX: -2.8,
-         pcbY: 26.3,
+-        pcbX: -2.8,
+-        pcbY: 26.3,
 -        pcbRotation: 90
++        pcbX: -10.5,
++        pcbY: 17,
 +        pcbRotation: 90,
 +        schX: 5.1,
 +        schY: -4
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2862,10 +3019,13 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2862,10 +3059,14 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_3V3",
          capacitance: "10uF",
          footprint: "0603",
 -        schSectionName: schSections.power(name),
++        supplierPartNumbers: { jlcpcb: ["C19702"] },
 +        schSheetName: programmingSchSheetName,
 +        schSectionName: schSections.usb(name),
          schOrientation: "vertical",
-         pcbX: -8.5,
+-        pcbX: -8.5,
 -        pcbY: 4.2
-+        pcbY: 4.2,
++        pcbX: -2.5,
++        pcbY: 18,
 +        schX: 0.6,
 +        schY: -12
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2873,13 +3033,13 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2874,12 +3075,15 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_CORE",
          capacitance: "1uF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C52923"] },
++        maxDecouplingTraceLength: 1.5,
          schSectionName: schSections.rp2040(name),
          schOrientation: "vertical",
-         pcbX: 3.8,
-         pcbY: -5.5,
+-        pcbX: 3.8,
+-        pcbY: -5.5,
 -        schX: -3.65,
 -        schY: -3.7
++        pcbX: 1.6,
++        pcbY: 5.7,
++        pcbRotation: 90,
 +        schX: -3.8,
 +        schY: -3.2
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2887,11 +3047,14 @@ var Microcontroller_RP2040 = (_a) => {
-       {
+@@ -2888,34 +3092,94 @@ var Microcontroller_RP2040 = (_a) => {
          name: "C_USB",
          capacitance: "1uF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C52923"] },
++        maxDecouplingTraceLength: 1.5,
 +        schSheetName: programmingSchSheetName,
          schSectionName: schSections.usb(name),
          schOrientation: "vertical",
-         pcbX: 9.8,
+-        pcbX: 9.8,
 -        pcbY: 18.4
-+        pcbY: 18.4,
++        pcbX: 2.8,
++        pcbY: 5.7,
++        pcbRotation: 90,
 +        schX: 7.1,
 +        schY: -4
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2899,11 +3062,13 @@ var Microcontroller_RP2040 = (_a) => {
+       "capacitor",
        {
          name: "C_XIN",
-         capacitance: "18pF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
+-        capacitance: "18pF",
++        capacitance: "15pF",
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1548"] },
++        manufacturerPartNumber: "0402CG150J500NT",
          schSectionName: schSections.clock(name),
          schOrientation: "vertical",
-         pcbX: -8.4,
+-        pcbX: -8.4,
 -        pcbY: -11.8
-+        pcbY: -11.8,
++        pcbX: -2,
++        pcbY: -8.3,
 +        schX: -4.95,
 +        schY: -15.25
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2911,11 +3076,13 @@ var Microcontroller_RP2040 = (_a) => {
+       "capacitor",
        {
          name: "C_XOUT",
-         capacitance: "18pF",
--        footprint: "0402",
-+        footprint: capacitor0402Footprint(),
-         schSectionName: schSections.clock(name),
-         schOrientation: "vertical",
-         pcbX: -2.4,
--        pcbY: -21
-+        pcbY: -11.8,
+-        capacitance: "18pF",
++        capacitance: "15pF",
++        footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1548"] },
++        manufacturerPartNumber: "0402CG150J500NT",
++        schSectionName: schSections.clock(name),
++        schOrientation: "vertical",
++        pcbX: 0,
++        pcbY: -8.3,
 +        schX: -3.1,
 +        schY: -15.25
++      }
++    ),
++    /* @__PURE__ */ jsx20(
++      "resistor",
++      {
++        name: "R_XOUT",
++        resistance: "1k",
+         footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C11702"] },
+         schSectionName: schSections.clock(name),
++        pcbX: 1.8,
++        pcbY: -5.8,
++        schX: -2.3,
++        schY: -13.5
++      }
++    ),
++    /* @__PURE__ */ jsx20(
++      "capacitor",
++      {
++        name: "C_DVDD1",
++        capacitance: "100nF",
++        footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        maxDecouplingTraceLength: 1.5,
++        schSectionName: schSections.rp2040(name),
+         schOrientation: "vertical",
+-        pcbX: -2.4,
+-        pcbY: -21
++        pcbX: -0.8,
++        pcbY: 5.7,
++        pcbRotation: 90,
++        schX: 4.5,
++        schY: -6.4
++      }
++    ),
++    /* @__PURE__ */ jsx20(
++      "capacitor",
++      {
++        name: "C_DVDD2",
++        capacitance: "100nF",
++        footprint: "0402",
++        supplierPartNumbers: { jlcpcb: ["C1525"] },
++        schSectionName: schSections.rp2040(name),
++        schOrientation: "vertical",
++        pcbX: 2.8,
++        pcbY: -4.5,
++        schX: 6.2,
++        schY: -6.4
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2923,14 +3090,32 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2923,14 +3187,32 @@ var Microcontroller_RP2040 = (_a) => {
        {
          name: "L_AVDD",
          inductance: "600ohm@100MHz",
@@ -708,7 +926,7 @@ index 8d5ce79..1dea4d1 100644
        }
      ),
      /* @__PURE__ */ jsx20(
-@@ -2943,7 +3128,7 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2943,7 +3225,7 @@ var Microcontroller_RP2040 = (_a) => {
          schSectionName: schSections.debug(name),
          pcbX: -6,
          pcbY: -31,
@@ -717,7 +935,7 @@ index 8d5ce79..1dea4d1 100644
          schY: -15.5
        }
      ),
-@@ -2957,7 +3142,7 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2957,7 +3239,7 @@ var Microcontroller_RP2040 = (_a) => {
          schSectionName: schSections.debug(name),
          pcbX: -2,
          pcbY: -31,
@@ -726,7 +944,7 @@ index 8d5ce79..1dea4d1 100644
          schY: -15.5
        }
      ),
-@@ -2971,7 +3156,7 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2971,7 +3253,7 @@ var Microcontroller_RP2040 = (_a) => {
          schSectionName: schSections.debug(name),
          pcbX: 2,
          pcbY: -31,
@@ -735,7 +953,7 @@ index 8d5ce79..1dea4d1 100644
          schY: -15.5
        }
      ),
-@@ -2985,7 +3170,7 @@ var Microcontroller_RP2040 = (_a) => {
+@@ -2985,7 +3267,7 @@ var Microcontroller_RP2040 = (_a) => {
          schSectionName: schSections.debug(name),
          pcbX: 6,
          pcbY: -31,
@@ -744,3 +962,117 @@ index 8d5ce79..1dea4d1 100644
          schY: -15.5
        }
      ),
+@@ -3013,7 +3295,8 @@ var Microcontroller_RP2040 = (_a) => {
+         name: "QSPI_SD1",
+         from: ".U1 > .QSPI_SD1",
+         to: ".U2 > .pin2",
+-        schDisplayLabel: "QSPI_SD1"
++        schDisplayLabel: "QSPI_SD1",
++        maxViaCount: 0
+       })
+     ),
+     /* @__PURE__ */ jsx20(
+@@ -3091,22 +3374,12 @@ var Microcontroller_RP2040 = (_a) => {
+         to: "net.V3V3"
+       }), v3v3Label)
+     ),
+-    /* @__PURE__ */ jsx20(
+-      "trace",
+-      __spreadValues(__spreadProps(__spreadValues({}, denseTraceProps), {
+-        name: "DVDD1_P",
+-        from: ".U1 > .DVDD1",
+-        to: "net.V1V1"
+-      }), v1v1Label)
+-    ),
+-    /* @__PURE__ */ jsx20(
+-      "trace",
+-      __spreadValues(__spreadProps(__spreadValues({}, denseTraceProps), {
+-        name: "DVDD2_P",
+-        from: ".U1 > .DVDD2",
+-        to: "net.V1V1"
+-      }), v1v1Label)
+-    ),
++    /* @__PURE__ */ jsx20("trace", __spreadProps(__spreadValues({}, denseTraceProps), { name: "DVDD1_CAP", from: ".C_DVDD1 > .pin1", to: ".U1 > .DVDD1", maxViaCount: 0 })),
++    /* @__PURE__ */ jsx20("trace", __spreadValues(__spreadProps(__spreadValues({}, denseTraceProps), { name: "DVDD1_P", from: ".U1 > .DVDD1", to: "net.V1V1", maxViaCount: 0 }), v1v1Label)),
++    /* @__PURE__ */ jsx20("trace", __spreadProps(__spreadValues({}, denseTraceProps), { name: "VREG_CORE", from: ".U1 > .VREG_VOUT", to: ".C_CORE > .pin1", maxViaCount: 0 })),
++    /* @__PURE__ */ jsx20("trace", __spreadValues(__spreadProps(__spreadValues({}, denseTraceProps), { name: "VREG_VOUT_P", from: ".U1 > .VREG_VOUT", to: "net.V1V1", maxViaCount: 0 }), v1v1Label)),
++    /* @__PURE__ */ jsx20("trace", __spreadValues(__spreadProps(__spreadValues({}, denseTraceProps), { name: "DVDD2_P", from: ".U1 > .DVDD2", to: "net.V1V1", maxViaCount: 0 }), v1v1Label)),
++    /* @__PURE__ */ jsx20("trace", __spreadProps(__spreadValues({}, denseTraceProps), { name: "DVDD2_CAP", from: ".U1 > .DVDD2", to: ".C_DVDD2 > .pin1", maxViaCount: 0 })),
+     /* @__PURE__ */ jsx20(
+       "trace",
+       __spreadValues(__spreadProps(__spreadValues({}, denseTraceProps), {
+@@ -3115,14 +3388,6 @@ var Microcontroller_RP2040 = (_a) => {
+         to: "net.V3V3"
+       }), v3v3Label)
+     ),
+-    /* @__PURE__ */ jsx20(
+-      "trace",
+-      __spreadValues(__spreadProps(__spreadValues({}, denseTraceProps), {
+-        name: "VREG_VOUT_P",
+-        from: ".U1 > .VREG_VOUT",
+-        to: "net.V1V1"
+-      }), v1v1Label)
+-    ),
+     /* @__PURE__ */ jsx20(
+       "trace",
+       __spreadValues(__spreadProps(__spreadValues({}, denseTraceProps), {
+@@ -3142,22 +3407,22 @@ var Microcontroller_RP2040 = (_a) => {
+     ),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "VBUS_A", from: ".J_USB > .A4B9", to: "net.VBUS" }, vbusLabel)),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "VBUS_B", from: ".J_USB > .B4A9", to: "net.VBUS" }, vbusLabel)),
+-    /* @__PURE__ */ jsx20("trace", { name: "USB_DN_A", from: ".J_USB > .A7", to: ".R_USB1 > .pin1" }),
+     /* @__PURE__ */ jsx20(
+       "trace",
+       __spreadProps(__spreadValues({}, denseTraceProps), {
+         name: "USB_DN",
+         from: ".R_USB1 > .pin2",
+-        to: ".U1 > .USB_DM"
++        to: ".U1 > .USB_DM",
++        maxViaCount: 0
+       })
+     ),
+-    /* @__PURE__ */ jsx20("trace", { name: "USB_DP_A", from: ".J_USB > .A6", to: ".R_USB2 > .pin1" }),
+     /* @__PURE__ */ jsx20(
+       "trace",
+       __spreadProps(__spreadValues({}, denseTraceProps), {
+         name: "USB_DP",
+         from: ".R_USB2 > .pin2",
+-        to: ".U1 > .USB_DP"
++        to: ".U1 > .USB_DP",
++        maxViaCount: 0
+       })
+     ),
+     /* @__PURE__ */ jsx20(
+@@ -3233,9 +3498,8 @@ var Microcontroller_RP2040 = (_a) => {
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "REG_G", from: ".U3 > .GND", to: "net.GND" }, gndLabel)),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "C3V3_P", from: ".C_3V3 > .pin1", to: "net.V3V3" }, v3v3Label)),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "C3V3_G", from: ".C_3V3 > .pin2", to: "net.GND" }, gndLabel)),
+-    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "CORE_P", from: ".C_CORE > .pin1", to: "net.V1V1" }, v1v1Label)),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "CORE_G", from: ".C_CORE > .pin2", to: "net.GND" }, gndLabel)),
+-    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "CUSB_P", from: ".C_USB > .pin1", to: "net.V3V3" }, v3v3Label)),
++    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "CUSB_P", from: ".C_USB > .pin1", to: ".U1 > .VREG_IN" }, v3v3Label)),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "CUSB_G", from: ".C_USB > .pin2", to: "net.GND" }, gndLabel)),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "AVDD_IN", from: ".L_AVDD > .pin1", to: "net.V3V3" }, v3v3Label)),
+     /* @__PURE__ */ jsx20(
+@@ -3254,15 +3518,18 @@ var Microcontroller_RP2040 = (_a) => {
+         to: "net.ADC_VREF"
+       }, adcRefLabel)
+     ),
+-    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "FLSH_GND", from: ".U2 > .GND", to: "net.GND" }, gndLabel)),
++    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "FLSH_GND", from: ".U2 > .GND", to: "net.GND", maxViaCount: 0 }, gndLabel)),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "FLSH_VCC", from: ".U2 > .VCC", to: "net.V3V3" }, v3v3Label)),
+-    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "FLSH_EP", from: ".U2 > .EP", to: "net.GND" }, gndLabel)),
++    /* @__PURE__ */ jsx20("trace", { name: "FLSH_EP_GND_JOIN", from: ".U2 > .EP", to: ".U2 > .GND", maxViaCount: 0 }),
+     /* @__PURE__ */ jsx20("trace", { name: "XIN", from: ".Y1 > .pin1", to: ".U1 > .XIN" }),
+-    /* @__PURE__ */ jsx20("trace", { name: "XOUT", from: ".Y1 > .pin3", to: ".U1 > .XOUT" }),
++    /* @__PURE__ */ jsx20("trace", { name: "XOUT_R", from: ".Y1 > .pin3", to: ".R_XOUT > .pin1" }),
++    /* @__PURE__ */ jsx20("trace", { name: "XOUT", from: ".R_XOUT > .pin2", to: ".U1 > .XOUT" }),
+     /* @__PURE__ */ jsx20("trace", { name: "CXIN", from: ".C_XIN > .pin1", to: ".Y1 > .pin1" }),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "CXIN_G", from: ".C_XIN > .pin2", to: "net.GND" }, gndLabel)),
+     /* @__PURE__ */ jsx20("trace", { name: "CXOUT", from: ".C_XOUT > .pin1", to: ".Y1 > .pin3" }),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "CXOUT_G", from: ".C_XOUT > .pin2", to: "net.GND" }, gndLabel)),
++    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "DVDD1_CAP_G", from: ".C_DVDD1 > .pin2", to: "net.GND" }, gndLabel)),
++    /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "DVDD2_CAP_G", from: ".C_DVDD2 > .pin2", to: "net.GND" }, gndLabel)),
+     /* @__PURE__ */ jsx20("trace", { name: "BOOT_SW", from: ".SW_BOOT > .pin1", to: ".U1 > .QSPI_SS" }),
+     /* @__PURE__ */ jsx20("trace", __spreadValues({ name: "BOOT_G", from: ".SW_BOOT > .pin3", to: "net.GND" }, gndLabel)),
+     /* @__PURE__ */ jsx20("trace", { name: "BOOT_R", from: ".R_BOOT > .pin1", to: ".U1 > .QSPI_SS" }),

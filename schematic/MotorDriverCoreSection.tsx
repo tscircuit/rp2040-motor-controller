@@ -1,18 +1,16 @@
-import { DRV8833PWPR } from "../imports/DRV8833PWPR";
+import { DRV8847PWPR } from "../imports/DRV8847PWPR";
+import { BSS84 } from "../imports/BSS84";
 import {
+  groundTrace,
   logicTrace,
   powerTrace,
   schematicSections,
   schematicSheets,
 } from "./config";
-import {
-  capacitor0402Footprint,
-  resistor0402Footprint,
-} from "./exact0402Footprints";
 
 export const MotorDriverController = () => (
   <>
-    <DRV8833PWPR
+    <DRV8847PWPR
       name="DRIVER"
       pcbX={11}
       pcbY={-0.5}
@@ -32,7 +30,7 @@ export const MotorDriverController = () => (
           direction: "top-to-bottom",
         },
         topSide: {
-          pins: [12, 11, 14],
+          pins: [12],
           direction: "left-to-right",
         },
         bottomSide: {
@@ -44,7 +42,6 @@ export const MotorDriverController = () => (
         pin7: { marginTop: 0.45 },
         pin9: { marginTop: 0.45 },
         pin1: { marginTop: 0.45 },
-        pin11: { marginLeft: 0.35 },
       }}
       schSheetName={schematicSheets.motorDriver}
       schSectionName={schematicSections.driverCore}
@@ -58,8 +55,10 @@ export const MotorDriverPassives = () => (
       name="C_VM_BULK"
       capacitance="10uF"
       footprint="1206"
-      pcbX={16.1}
-      pcbY={2.35}
+      supplierPartNumbers={{ jlcpcb: ["C77093"] }}
+      manufacturerPartNumber="GRM31CR71E106KA12L"
+      pcbX={15}
+      pcbY={5}
       maxDecouplingTraceLength={5.5}
       schX={-1.2}
       schY={-3.5}
@@ -73,8 +72,9 @@ export const MotorDriverPassives = () => (
       name="C_VM_HF"
       capacitance="100nF"
       footprint="0603"
-      pcbX={12.15}
-      pcbY={4}
+      supplierPartNumbers={{ jlcpcb: ["C14663"] }}
+      pcbX={10.8}
+      pcbY={4.2}
       maxDecouplingTraceLength={5.5}
       schX={-1.2}
       schY={-1.5}
@@ -84,42 +84,14 @@ export const MotorDriverPassives = () => (
       schSheetName={schematicSheets.motorDriver}
       schSectionName={schematicSections.driverCore}
     />
-    <capacitor
-      name="C_VCP"
-      capacitance="10nF"
-      footprint={capacitor0402Footprint()}
-      pcbX={8}
-      pcbY={6}
-      schX={-1.2}
-      schY={0.5}
-      schMarginX={0.15}
-      schMarginY={0.25}
-      schOrientation="vertical"
-      schSheetName={schematicSheets.motorDriver}
-      schSectionName={schematicSections.driverCore}
-    />
-    <capacitor
-      name="C_VINT"
-      capacitance="2.2uF"
-      footprint="0603"
-      maxDecouplingTraceLength={6.5}
-      pcbX={5}
-      pcbY={2}
-      schX={-1.2}
-      schY={2.5}
-      schMarginX={0.15}
-      schMarginY={0.25}
-      schOrientation="vertical"
-      schSheetName={schematicSheets.motorDriver}
-      schSectionName={schematicSections.driverCore}
-    />
-
     <resistor
       name="R_ISEN_A"
-      resistance="0.2"
+      resistance="0.15"
       footprint="2512"
-      pcbX={5}
-      pcbY={-9}
+      supplierPartNumbers={{ jlcpcb: ["C2903485"] }}
+      manufacturerPartNumber="HoJLR2512-3W-150mR-1%"
+      pcbX={6}
+      pcbY={-8.5}
       schX={-10}
       schY={1.5}
       schSheetName={schematicSheets.motorDriver}
@@ -127,10 +99,12 @@ export const MotorDriverPassives = () => (
     />
     <resistor
       name="R_ISEN_B"
-      resistance="0.2"
+      resistance="0.15"
       footprint="2512"
-      pcbX={17}
-      pcbY={-9}
+      supplierPartNumbers={{ jlcpcb: ["C2903485"] }}
+      manufacturerPartNumber="HoJLR2512-3W-150mR-1%"
+      pcbX={16}
+      pcbY={-8.5}
       schX={-10}
       schY={-1.5}
       schSheetName={schematicSheets.motorDriver}
@@ -139,9 +113,10 @@ export const MotorDriverPassives = () => (
     <resistor
       name="R_SLEEP_PD"
       resistance="100k"
-      footprint={resistor0402Footprint()}
-      pcbX={5}
-      pcbY={-3}
+      footprint="0402"
+      supplierPartNumbers={{ jlcpcb: ["C25741"] }}
+      pcbX={2}
+      pcbY={-5}
       schX={-8}
       schY={-4.5}
       schSheetName={schematicSheets.motorDriver}
@@ -150,11 +125,40 @@ export const MotorDriverPassives = () => (
     <resistor
       name="R_FAULT_PU"
       resistance="10k"
-      footprint={resistor0402Footprint()}
-      pcbX={5}
-      pcbY={-5}
+      footprint="0402"
+      supplierPartNumbers={{ jlcpcb: ["C25744"] }}
+      manufacturerPartNumber="0402WGF1002TCE"
+      pcbX={18}
+      pcbY={-4.5}
       schX={-8}
       schY={-7}
+      schSheetName={schematicSheets.motorDriver}
+      schSectionName={schematicSections.driverCore}
+    />
+    <BSS84
+      name="Q_PD_ENABLE"
+      pcbX={4}
+      pcbY={-1.5}
+      schX={-12}
+      schY={-3}
+      schWidth={1.6}
+      schHeight={1.8}
+      schPinArrangement={{
+        leftSide: { pins: [1], direction: "top-to-bottom" },
+        rightSide: { pins: [2, 3], direction: "top-to-bottom" },
+      }}
+      schSheetName={schematicSheets.motorDriver}
+      schSectionName={schematicSections.driverCore}
+    />
+    <resistor
+      name="R_PD_ENABLE_PU"
+      resistance="100k"
+      footprint="0402"
+      supplierPartNumbers={{ jlcpcb: ["C25741"] }}
+      pcbX={1}
+      pcbY={0}
+      schX={-10}
+      schY={-3}
       schSheetName={schematicSheets.motorDriver}
       schSectionName={schematicSections.driverCore}
     />
@@ -165,39 +169,39 @@ export const MotorDriverControlTraces = () => (
   <>
     <trace
       name="DRIVER_AIN1"
-      from=".MCU > .U1 > .GPIO0"
+      from=".MCU > .U1 > .GPIO18"
       to=".DRIVER > .AIN1"
       {...logicTrace}
     />
     <trace
       name="DRIVER_AIN2"
-      from=".MCU > .U1 > .GPIO1"
+      from=".MCU > .U1 > .GPIO19"
       to=".DRIVER > .AIN2"
       {...logicTrace}
     />
     <trace
       name="DRIVER_BIN1"
-      from=".MCU > .U1 > .GPIO2"
+      from=".MCU > .U1 > .GPIO20"
       to=".DRIVER > .BIN1"
       {...logicTrace}
     />
     <trace
       name="DRIVER_BIN2"
-      from=".MCU > .U1 > .GPIO3"
+      from=".MCU > .U1 > .GPIO21"
       to=".DRIVER > .BIN2"
       {...logicTrace}
     />
     <trace
       name="DRIVER_SLEEP"
-      from=".MCU > .U1 > .GPIO4"
-      to=".DRIVER > .nSleep"
+      from=".MCU > .U1 > .GPIO22"
+      to=".Q_PD_ENABLE > .source"
       {...logicTrace}
     />
     <trace
       name="DRIVER_FAULT"
-      from=".MCU > .U1 > .GPIO5"
+      from=".MCU > .U1 > .GPIO23"
       to=".DRIVER > .nFault"
-      {...logicTrace}
+      thickness="0.1mm"
     />
   </>
 );
@@ -217,12 +221,6 @@ export const MotorDriverPowerTraces = () => (
       to=".C_VM_HF > .pin1"
       {...powerTrace}
     />
-    <trace
-      name="VCP_SUPPLY"
-      from=".DRIVER > .VM"
-      to=".C_VCP > .pin2"
-      {...logicTrace}
-    />
   </>
 );
 
@@ -232,13 +230,13 @@ export const MotorDriverPrimaryGroundTraces = () => (
       name="COMMON_GND"
       from=".DRIVER > .GND2"
       to=".MCU > .U1 > .GND"
-      {...powerTrace}
+      {...groundTrace}
     />
     <trace
       name="DRIVER_GND_JOIN"
       from=".DRIVER > .GND1"
       to=".DRIVER > .GND2"
-      {...powerTrace}
+      {...groundTrace}
     />
   </>
 );
@@ -248,32 +246,26 @@ export const MotorDriverGroundTraces = () => (
     <trace
       name="ISEN_A_GND"
       from=".R_ISEN_A > .pin2"
-      to=".DRIVER > .GND2"
-      {...powerTrace}
+      to="net.GND"
+      {...groundTrace}
     />
     <trace
       name="ISEN_B_GND"
       from=".R_ISEN_B > .pin2"
-      to=".DRIVER > .GND2"
-      {...powerTrace}
-    />
-    <trace
-      name="VINT_GND"
-      from=".C_VINT > .pin2"
-      to=".DRIVER > .GND2"
-      {...logicTrace}
+      to="net.GND"
+      {...groundTrace}
     />
     <trace
       name="VM_BULK_GND"
       from=".C_VM_BULK > .pin2"
       to="net.GND"
-      {...powerTrace}
+      {...groundTrace}
     />
     <trace
       name="VM_HF_GND"
       from=".C_VM_HF > .pin2"
       to="net.GND"
-      {...powerTrace}
+      {...groundTrace}
     />
     <trace
       name="SLEEP_PULLDOWN_GND"
@@ -300,18 +292,31 @@ export const MotorDriverSenseAndControlTraces = () => (
       schDisplayLabel="B_ISEN"
       {...powerTrace}
     />
+    <trace name="DRIVER_MODE" from=".DRIVER > .MODE" to="net.GND" {...logicTrace} />
+    <trace name="DRIVER_TRQ" from=".DRIVER > .TRQ" to="net.GND" {...logicTrace} />
     <trace
-      name="VCP"
-      from=".DRIVER > .VCP"
-      to=".C_VCP > .pin1"
-      schDisplayLabel="VCP"
+      name="PD_ENABLE_OUTPUT"
+      from=".Q_PD_ENABLE > .drain"
+      to=".DRIVER > .nSleep"
       {...logicTrace}
     />
     <trace
-      name="VINT"
-      from=".DRIVER > .VINT"
-      to=".C_VINT > .pin1"
-      schDisplayLabel="VINT"
+      name="PD_ENABLE_GATE"
+      from=".Q_PD_ENABLE > .gate"
+      to=".U_PD > .PG"
+      schDisplayLabel="PD_GOOD"
+      {...logicTrace}
+    />
+    <trace
+      name="PD_ENABLE_GATE_PULLUP"
+      from=".R_PD_ENABLE_PU > .pin1"
+      to=".Q_PD_ENABLE > .gate"
+      {...logicTrace}
+    />
+    <trace
+      name="PD_ENABLE_PULLUP_SUPPLY"
+      from=".R_PD_ENABLE_PU > .pin2"
+      to=".U_PD > .VDD"
       {...logicTrace}
     />
     <trace
@@ -326,12 +331,12 @@ export const MotorDriverSenseAndControlTraces = () => (
       from=".R_FAULT_PU > .pin1"
       to=".DRIVER > .nFault"
       schDisplayLabel="nFAULT"
-      {...logicTrace}
+      thickness="0.1mm"
     />
     <trace
       name="FAULT_PULLUP_3V3"
       from=".R_FAULT_PU > .pin2"
-      to=".MCU > .U1 > .IOVDD1"
+      to="net.V3V3"
       {...logicTrace}
     />
   </>
