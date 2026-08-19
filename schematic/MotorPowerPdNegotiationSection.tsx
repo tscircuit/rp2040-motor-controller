@@ -84,8 +84,9 @@ export const MotorPowerPdPassives = () => (
       name="C_PD_VDD"
       capacitance="1uF"
       footprint="0603"
-      pcbX={11}
-      pcbY={25}
+      pcbX={22.5}
+      pcbY={18.8}
+      maxDecouplingTraceLength={10}
       schX={-7.8}
       schY={0}
       schOrientation="vertical"
@@ -293,7 +294,7 @@ export const MotorPowerPdSupportGroundTraces = () => (
     <trace
       name="PD_VDD_CAP_GND"
       from=".C_PD_VDD > .pin2"
-      to=".DRIVER > .GND2"
+      to="net.GND"
       {...logicTrace}
     />
     <trace

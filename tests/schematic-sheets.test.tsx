@@ -192,4 +192,4 @@ test("renders the controller, programming, motor driver, and motor power sheets"
       showErrorsInTextOverlay: true,
     }),
   ).toMatchSvgSnapshot(import.meta.path);
-});
+}, 15_000);

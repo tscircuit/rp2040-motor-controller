@@ -189,33 +189,37 @@ export const DRV8833PWPR = (props: ChipProps<typeof pinLabels>) => {
             height="2.7399996mm"
             shape="rect"
           />
-          <via
+          <platedhole
+            portHints={["pin17"]}
             pcbX="0.500126mm"
             pcbY="0.499872mm"
             outerDiameter="0.6096mm"
             holeDiameter="0.3048mm"
-            layers={["top", "bottom"]}
+            shape="circle"
           />
-          <via
+          <platedhole
+            portHints={["pin17"]}
             pcbX="-0.499872mm"
             pcbY="0.499872mm"
             outerDiameter="0.6096mm"
             holeDiameter="0.3048mm"
-            layers={["top", "bottom"]}
+            shape="circle"
           />
-          <via
+          <platedhole
+            portHints={["pin17"]}
             pcbX="-0.499872mm"
             pcbY="-0.500126mm"
             outerDiameter="0.6096mm"
             holeDiameter="0.3048mm"
-            layers={["top", "bottom"]}
+            shape="circle"
           />
-          <via
+          <platedhole
+            portHints={["pin17"]}
             pcbX="0.500126mm"
             pcbY="-0.500126mm"
             outerDiameter="0.6096mm"
             holeDiameter="0.3048mm"
-            layers={["top", "bottom"]}
+            shape="circle"
           />
           <silkscreenpath
             route={[

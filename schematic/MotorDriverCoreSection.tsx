@@ -15,7 +15,7 @@ export const MotorDriverController = () => (
     <DRV8833PWPR
       name="DRIVER"
       pcbX={11}
-      pcbY={0}
+      pcbY={-0.5}
       schX={-5.5}
       schY={0}
       schWidth={3.8}
@@ -58,8 +58,9 @@ export const MotorDriverPassives = () => (
       name="C_VM_BULK"
       capacitance="10uF"
       footprint="1206"
-      pcbX={16}
-      pcbY={8}
+      pcbX={16.1}
+      pcbY={2.35}
+      maxDecouplingTraceLength={5.5}
       schX={-1.2}
       schY={-3.5}
       schMarginX={0.15}
@@ -72,8 +73,9 @@ export const MotorDriverPassives = () => (
       name="C_VM_HF"
       capacitance="100nF"
       footprint="0603"
-      pcbX={12}
-      pcbY={8}
+      pcbX={12.15}
+      pcbY={4}
+      maxDecouplingTraceLength={5.5}
       schX={-1.2}
       schY={-1.5}
       schMarginX={0.15}
@@ -100,6 +102,7 @@ export const MotorDriverPassives = () => (
       name="C_VINT"
       capacitance="2.2uF"
       footprint="0603"
+      maxDecouplingTraceLength={6.5}
       pcbX={5}
       pcbY={2}
       schX={-1.2}
@@ -263,19 +266,19 @@ export const MotorDriverGroundTraces = () => (
     <trace
       name="VM_BULK_GND"
       from=".C_VM_BULK > .pin2"
-      to=".DRIVER > .GND2"
+      to="net.GND"
       {...powerTrace}
     />
     <trace
       name="VM_HF_GND"
       from=".C_VM_HF > .pin2"
-      to=".DRIVER > .GND2"
+      to="net.GND"
       {...powerTrace}
     />
     <trace
       name="SLEEP_PULLDOWN_GND"
       from=".R_SLEEP_PD > .pin2"
-      to=".DRIVER > .GND2"
+      to="net.GND"
       {...logicTrace}
     />
   </>
