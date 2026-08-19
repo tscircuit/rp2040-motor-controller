@@ -1,6 +1,6 @@
 {
   "name": "@tsci/imrishabh18.rp2040-motor-controller",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "RP2040 dual brushed-DC motor controller built with tscircuit",
   "main": "index.tsx",
   "keywords": [
