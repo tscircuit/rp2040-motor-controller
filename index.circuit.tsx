@@ -1,4 +1,3 @@
-import { createPhasedPowerTraceExpanderAlgorithm } from "./lib/createPhasedPowerTraceExpanderAlgorithm";
 import { ControllerSections } from "./schematic/ControllerSections";
 import {
   MotorDriverController,
@@ -34,9 +33,6 @@ export default function Rp2040MotorController({
 }: {
   routingDisabled?: boolean;
 } = {}) {
-  const { initialAlgorithmFn, rerouteAlgorithmFn } =
-    createPhasedPowerTraceExpanderAlgorithm();
-
   return (
     <board
       width="90mm"
@@ -44,20 +40,10 @@ export default function Rp2040MotorController({
       autorouter={{
         local: true,
         groupMode: "subcircuit",
-        algorithmFn: initialAlgorithmFn,
       }}
     >
       <net name="GND" />
       <SchematicSheets />
-
-      <autoroutingphase
-        reroute
-        region={{ minX: -45, maxX: 45, minY: -37.5, maxY: 37.5 }}
-        autorouter={{
-          local: true,
-          algorithmFn: rerouteAlgorithmFn,
-        }}
-      />
 
       <ControllerSections />
       <MotorDriverController />

@@ -665,7 +665,7 @@ index 8d5ce79..1dea4d1 100644
          schOrientation: "vertical",
          pcbX: -2.4,
 -        pcbY: -21
-+        pcbY: -21,
++        pcbY: -11.8,
 +        schX: -3.1,
 +        schY: -15.25
        }

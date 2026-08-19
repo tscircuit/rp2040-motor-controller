@@ -1,6 +1,6 @@
 {
-  "name": "@tsci/tscircuit.rp2040-motor-controller",
-  "version": "1.0.0",
+  "name": "@tsci/imrishabh18.rp2040-motor-controller",
+  "version": "1.0.4",
   "description": "RP2040 dual brushed-DC motor controller built with tscircuit",
   "main": "index.tsx",
   "keywords": [
@@ -24,18 +24,17 @@
     "@types/react": "^19.2.17",
     "bun-match-svg": "0.0.15",
     "circuit-to-svg": "0.0.391",
-    "tscircuit": "^0.0.2162",
+    "tscircuit": "^0.0.2360",
     "typescript": "^5.0.0"
   },
   "dependencies": {
     "@tscircuit/common": "^0.0.48",
     "@tscircuit/core": "^0.0.1521",
     "@tscircuit/footprinter": "^0.0.380",
-    "@tscircuit/power-trace-expander": "github:tscircuit/power-trace-expander#20a08c8c1cf9d94798333cc4bcdcb8c85bd20418",
     "iobuffer": "^6.0.1"
   },
   "overrides": {
-    "@tscircuit/capacity-autorouter": "0.0.716",
+    "@tscircuit/capacity-autorouter": "0.0.740",
     "@tscircuit/core": "0.0.1521"
   },
   "patchedDependencies": {

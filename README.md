@@ -30,10 +30,6 @@ bun run build
 bun run snapshot:update
 ```
 
-The reusable solver and its generic step debugger live in
-[`@tscircuit/power-trace-expander`](https://github.com/tscircuit/power-trace-expander).
-[Open the deployed step-through debugger](https://power-trace-expander.vercel.app).
-
 The DRV8833 support network follows TI's recommendations: 10 uF from VM to
 ground, 10 nF from VCP to VM, and 2.2 uF from VINT to ground. The selected
 DRV8833PWPR is JLCPCB/LCSC part C50506.
@@ -43,66 +39,12 @@ C2765186. A 6.8 kohm CFG1 resistor selects the 9 V request. The CH224K VDD and
 VBUS-sense pins use 1 kohm and 10 kohm series resistors respectively, with 1 uF
 local VDD decoupling and 10 uF on the motor VBUS rail.
 
-## Trace-width reroute phase
+## Power-trace routing
 
-After the normal multigraph route, a whole-board `<autoroutingphase reroute />`
-runs `@tscircuit/power-trace-expander`. Conforming traces are retained unchanged.
-Under-width wire intervals are split into nominal-width-sized pieces and widened
-in place when the Flatbush obstacle index proves the required clearance. A
-blocked interval tries exponentially farther reconnect points, up to 10 mm of
-the original route. The solver can retreat to an earlier safe anchor before
-running obstacle-aware high-density grid searches. Candidate widths are tried
-from largest to smallest across multiple geometric resolutions, with aligned
-and half-cell offset variants. Successful paths and in-place segments are then
-probed to the widest safe quantized intermediate width.
-
-After width expansion plateaus, a cleanup pass removes redundant same-layer via
-pairs with compact shortcuts or a bounded obstacle-aware grid detour. A
-dedicated pad-clearance stage then moves power copper away from unrelated pads
-toward half of each trace's nominal width. It tries descending intermediate
-tiers when the full target cannot fit. A final stage normalizes the
-clearance-improved paths to 0/45/90-degree geometry while preserving the local
-clearance already gained. It may transactionally shove a lower-width neighbor;
-every displacement is rolled back unless the final path passes
-direction-independent boundary-width validation.
-
-When the nominal power corridor is blocked only by one or two lower-width
-traces, a bounded local inflation pass first applies a smooth elastic force to
-push those traces by the minimum useful amount. It falls back to a grid reroute
-between fixed anchors when necessary. Pads and vias remain fixed, and the
-displaced interval is capped at 10 mm.
-
-Segments that remain below half nominal width receive a bounded multilayer A*
-attempt. The solver tries two grid offsets, moves the route through one or two
-vias, and independently probes each terminal neck in 0.025 mm increments. This
-keeps unavoidable necking local to a pad escape while carrying nominal-width
-copper across the alternate layer. The candidate is accepted only when it
-reduces conservative copper deficit and passes the full obstacle and via-drill
-checks.
-
-Connection aliases are resolved across source traces, merged names, and PCB
-ports, so pads, vias, and traces on the same net are treated as connected copper
-rather than clearance obstacles. Diagonal traces and rotated obstacles are
-indexed as short AABBs; exact capsule, polygon, and circle checks run only for
-the candidates returned by Flatbush. The solver follows
-`@tscircuit/solver-utils` conventions and exposes elastic relaxation and active
-grid searches as granular debugger steps.
-
-Productive whole-board passes repeat until added copper falls below 0.1% of the
-nominal area. On the captured board problem, the 1 mm routes improve from 1.27%
-to 87.36% full-width coverage, their length-weighted average rises from 0.232 mm
-to 0.939 mm, and 93.55% of their length reaches at least 0.5 mm. The cleanup
-removes four redundant via pairs, normalizes 67 arbitrary-angle segments, and
-reduces power-to-pad clearance misses from 122 to 96 at the desired 0.50 mm
-target (and from 25 to 19 at 0.15 mm). The 0.25 mm routes reach 99.48%
-full-width coverage. A representative solver run completes in roughly 14
-seconds and has explicit wall-time, iteration, and grid-attempt regression
-budgets.
-
-The upper `P_MOTOR_A` path is also locked as an isolated full-board-context
-regression. It now uses exactly two vias and 10.129 mm of bottom-layer copper,
-reaching 99.52% conservative full-width coverage and a 0.998 mm average while
-keeping its unavoidable terminal neck at 0.600 mm.
+The board uses capacity autorouter Pipeline 7. Power-trace expansion is part of
+that pipeline, so the circuit does not import or run a separate post-routing
+solver. Connections whose requested width is materially larger than the board's
+ordinary routing width are expanded automatically after the multigraph route.
 
 After routing, the board generates top- and bottom-layer pours tied to one
 explicit board-level `GND` net. Both use 0.2 mm pad/trace clearance and remain
